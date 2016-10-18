@@ -78,6 +78,39 @@ Returns upon success:
 
 ---
 
+### cmor_set_cur_dataset_attribute()
+
+Fortran: error_flag = cmor_set_cur_dataset_attribute(name,value)
+{:.green }
+
+C: error_flag = cmor_set_cur_dataset_attribute(char *name, char *value, int optional) 
+{:.blue}
+
+Python: set_cur_dataset_attribute(name,value) 
+{:.coral }
+
+*Description*: Associate a global attribute with the current dataset.  In CMIP5, this function can be called to set, for example, "institute_id", "initialization" and "physics". 
+
+*Arguments*:
+
+  * **name** = name of the global attribute to set.
+
+  * **value** = character string containing the value of this attribute.
+
+  * **optional**  = an argument that is ignored.  (Internally, CMOR calls this function and needs this argument.)
+
+Returns upon success: 
+
+* Fortran: 0 
+{:.green}
+* C: 0 
+{:.blue}
+* Python: None 
+{:.coral}
+
+
+---
+
 ### cmor_get_cur_dataset_attribute()
 
 Fortran: error_flag = cmor_get_cur_dataset_attribute(name,result) 
