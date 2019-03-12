@@ -5,8 +5,25 @@ keywords: example, python
 sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_python/
 ---
-### CMOR Input Files
 
+This example is self contained and writes out files with CMOR.
+It requires that you have:
+
+* downloaded the Python script, [test_doc.py](https://github.com/PCMDI/cmor/blob/master/Test/test_doc.py)
+* downloaded the common user input json files given below
+* cloned the CMIP6 CMOR tables, ```bash git clone https://github.com/PCMDI/cmip6-cmor-tables.git```
+
+
+### Writing files
+
+In each example you can write your own file by executing the script. When writing your own data, each of the warnings tells you where CMOR has updated your input metadata/data, review them carefully to ensure it has done something sensible.
+
+```bash
+# if using conda environments, make sure you have activated it
+(CMOR) $ python <generate_file_script.py>
+```
+
+### CMOR Input Files
 
 * [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/master/Test/CMOR_input_example.json)
 * [CMIP6_coordinate.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_coordinate.json)
@@ -27,14 +44,14 @@ permalink: /mydoc_cmor3_python/
 import cmor
 
 cmor.setup(
-	# inpath has to point to the CMOR 
+	# inpath has to point to the CMOR
 	# tables path (CMIP6, input4MIPs or otherwise)
-	inpath='Tables',  
+	inpath='Tables',
 	netcdf_file_action=cmor.CMOR_REPLACE_4
 )
 
-cmor.dataset_json("Test/CMOR_input_example.json")    
-  
+cmor.dataset_json("Test/CMOR_input_example.json")
+
 # Loading this test table overwrites the normal CF checks on valid variable values.
 # This is perfect for testing but shouldn't be done when writing real data.
 table='CMIP6_Amon.json'
@@ -56,7 +73,7 @@ ilon = cmor.axis(table_entry= 'longitude',
                  cell_bounds= [89, 91])
 
 axis_ids = [itime,ilat,ilon]
-              
+
 # here we create a variable with appropriate name, units and axes
 varid = cmor.variable('ts', 'K', axis_ids)
 
@@ -434,7 +451,7 @@ data:
   0, 31,
   31, 60 ;
 
- plev = 100000, 92500, 85000, 70000, 60000, 50000, 40000, 30000, 25000, 
+ plev = 100000, 92500, 85000, 70000, 60000, 50000, 40000, 30000, 25000,
     20000, 15000, 10000, 7000, 5000, 3000, 2000, 1000, 500, 100 ;
 
  lat = 10, 20, 30 ;
@@ -1303,6 +1320,4 @@ data:
   51.7, 51.7, 52.1, 52.5,
   50.1, 50.5, 50.9, 51.3 ;
 }
-
-```
 </details>

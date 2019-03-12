@@ -9,6 +9,8 @@ type: homepage
 
 This document describes Version 3 of a software library called "Climate Model Output Rewriter" (CMOR3)[\[1\]](#1), written in C with access also provided via Fortran 90 and through Python[\[2\]](#2).  CMOR is used to produce CF-compliant[\[3\]](#3) netCDF[\[4\]](#4) files.  The structure of the files created by CMOR and the metadata they contain fulfill the requirements of many of the climate community's standard model experiments (which are referred to here as "MIPs"[\[5\]](#5) and include, for example, AMIP, PMIP, APE, and IPCC [DN1] scenario runs).  
  
+### Overview
+
 CMOR was not designed to serve as an all-purpose writer of CF-compliant netCDF files, but simply to reduce the effort required to prepare and manage MIP model output.  Although MIPs encourage systematic analysis of results across models, this is only easy to do if the model output is written in a common format with files structured similarly and with sufficient metadata uniformly stored according to a common standard.  Individual modeling groups store their data in different ways, but if a group can read its own data, then it should easily be able to transform the data, using CMOR, into the common format required by the MIPs.   The adoption of CMOR as a standard code for exchanging climate data will facilitate participation in MIPs because after learning how to satisfy the output requirements of one MIP, it will be easy to prepare output for other MIPs.
  
 CMOR output has the following characteristics:
@@ -25,12 +27,14 @@ CMOR output has the following characteristics:
 
 * CMOR also must be linked against the udunits2 library [see http://www.unidata.ucar.edu/software/udunits/](http://www.unidata.ucar.edu/software/udunits/), which enables CMOR to check that the units attribute is correct[\[6\]](#6). Finally CMOR3 must also be linked against the uuid library [see http://www.ossp.org/pkg/lib/uuid](http://www.ossp.org/pkg/lib/uuid) in order to produce a unique tracking number for each file.   
  
+### Writing with CMOR
+
 Although the CMOR output adheres to a fairly rigid structure, there is considerable flexibility allowed in the design of codes that write data through the CMOR functions.  Depending on how the source data are stored, one might want to structure a code to read and rewrite the data through CMOR in several different ways.  Consider, for example, a case where data are originally stored in "history" files that contain many different fields, but a single time sample.   If one were to process several different fields through CMOR and one wanted to include many time samples per file, then it would usually be more efficient to read all the fields from the single input file at the same time, and then distribute them to the appropriate CMOR output files, rather than to process all the time-samples for a single field and then move on to the next field.  If, however, the original data were stored already by field (i.e., one variable per file), then it would make more sense to simply loop through the fields, one at a time.  The user is free to structure the conversion program in either of these ways (among others).
  
 Converting data with CMOR typically involves the following steps (with the CMOR function names given in parentheses):
 
 * Initialize CMOR and specify where output will be written and how error messages will be handled (cmor_setup).
-* Provide information directing where output should be placed and identifying the data source, project name, experiment, etc. (cmor_dataset_json).  User need to provide a User Input CMOR file to define each attribute.
+* Provide information directing where output should be placed and identifying the data source, project name, experiment, etc. (cmor_dataset_json).  The user needs to provide a User Input CMOR file to define each attribute.
 * Set any additional "dataset" (i.e. global) attributes (cmor_set_cur_dataset function).  Note that all CMIP6 attributes can also be defined in the CMOR input user JSON file (cmor_dataset_json).
 * Define the axes (i.e., the coordinate values) associated with each of the dimensions of the data to be written and obtain "handles", to be used in the next step, which uniquely identify the axes (cmor_axis).  
 * In the case of non-Cartesian longitude-latitude grids or for "station data", define the grid and its mapping parameters (cmor_grid and cmor_set_grid_mapping)
@@ -39,7 +43,9 @@ Converting data with CMOR typically involves the following steps (with the CMOR 
 * Close one or all files created by CMOR (cmor_close)
  
 There is an additional function (cmor_zfactor), which enables one to define metadata associated with dimensionless vertical coordinates.
- 
+
+### CMOR's quality control
+
 CMOR was designed to reduce the effort required of those contributing data to various MIPs.  An important aim was to minimize any transformations that the user would have to perform on their original data structures to meet the MIP requirements.  Toward this end, the code allows the following flexibility (with the MIP requirements obtained by CMOR from the appropriate MIP table and automatically applied):
 
 * The input data can be structured with dimensions in any order and with coordinate values either increasing or decreasing monotonically; CMOR will rearrange them to meet the MIP's requirements before writing out the data.
@@ -52,9 +58,10 @@ CMOR was designed to reduce the effort required of those contributing data to va
 
 The code does not, however, include a capability to interpolate data, either in the vertical or horizontally.  If data originally stored on model levels, is supposed to be stored on standard pressure levels, according to MIP specifications, then the user must interpolate before passing the data to CMOR. 
  
+### Metadata and CMOR
+
 The output resulting from CMOR is "self-describing" and includes metadata summarized below, organized by attribute type (global, coordinate, or variable attributes) and by its source (specified by the user or in a MIP table, or generated by CMOR).
  
-
 *Global attributes typically provided by the MIP table or generated by CMOR:*
  
 * *title*, identification of the project, experiment, and table.
@@ -122,8 +129,8 @@ Note: additional global attributes can be added by the user via the cmor_set_cur
  
 *Variable attributes typically provided by the user in a call to a CMOR function:*
  
-* *grid_mappingi*
-* *original_name*, containing the name of the variable as it is known at the user's home institution.i*
+* *grid_mapping*
+* *original_name*, containing the name of the variable as it is known at the user's home institution*
 * *original_units*, the units of the data passed to CMOR.
 * *history*, (when appropriate) information concerning processing of the variable prior to sending it to CMOR.  (This information may be supplemented by further history information generated by CMOR.)
 * *comment*, (when appropriate) providing miscellaneous information concerning the variable, which will supplement any comment contained in the MIP table.
@@ -159,14 +166,14 @@ As is evident from the above summary of metadata, a substantial fraction of the 
 
 ## Preliminary notes
 
-In the following, all arguments should be passed using keywords (to improve readability and flexibility in ordering the arguments).  Those arguments appearing below that are followed by an equal sign may be optional and, if not passed by the user, are assigned the default value that follows the equal sign.  The information in a MIP-specific input table determines whether or not an argument shown in brackets is optional or required, and the table provides MIP-specific default values for some parameters.  All arguments not in brackets and not followed by an equal sign are always required.
+In the documentation, all arguments should be passed using keywords (to improve readability and flexibility in ordering the arguments).  Those arguments appearing below that are followed by an equal sign may be optional and, if not passed by the user, are assigned the default value that follows the equal sign.  The information in a MIP-specific input table determines whether or not an argument shown in brackets is optional or required, and the table provides MIP-specific default values for some parameters.  All arguments not in brackets and not followed by an equal sign are always required.
 
-Three versions of each function are shown below.  The first one is for <span style="color:green">Fortran (green text)</span> the second for <span style="color:blue">C (blue text)</span>, and the third for <span style="color:coral">Python (orange text)</span>.   In the following, text that applies to only one of the coding languages appears in the appropriate color.
+Three versions of each function are shown in the documentation.  The first one is for <span style="color:green">Fortran (green text)</span> the second for <span style="color:blue">C (blue text)</span>, and the third for <span style="color:coral">Python (orange text)</span>.   In the following, text that applies to only one of the coding languages appears in the appropriate color.
 
-Some of the arguments passed to CMOR (e.g., names of variables and axes are only unambiguously defined in the context of a specific CMOR table, and in the Fortran version of the functions this is specified by one of the function arguments, whereas in the C and Python versions it is specified through a call to cmor_load_table and cmor_set_table.
+Some of the arguments passed to CMOR (e.g., names of variables and axes) are only unambiguously defined in the context of a specific CMOR table, and in the Fortran version of the functions this is specified by one of the function arguments, whereas in the C and Python versions it is specified through a call to cmor_load_table and cmor_set_table.
 
-All functions are type “integer”.  If a function results in an error, <span style="color:coral">an “exception” will be raised in the Python version (otherwise None will be returned)</span>, and in either the Fortran or C versions, the error will be indicated by the integer returned by the function itself.  <span style="color:blue">In C an integer other than 0 will be returned,</span> <span style="color:green"> and in Fortran errors will result in a negative integer (except in the case of cmor_grid, which will return a positive integer).</span>
+If a function results in an error, <span style="color:coral">an “exception” will be raised in the Python version (otherwise None will be returned)</span>, and in either the Fortran or C versions, the error will be indicated by the integer returned by the function itself.  <span style="color:blue">In C an integer other than 0 will be returned,</span> <span style="color:green"> and in Fortran errors will result in a negative integer (except in the case of cmor_grid, which will return a positive integer).</span>
 
 
-If no error is encountered, some functions will return information needed by the user in subsequent calls to CMOR.  In almost all cases this information is indicated by the value of a single integer that in Fortran and Python is returned as the value of the function itself, whereas in C it is returned as an output argument).  There are two cases in the Fortran version of CMOR, however, when a string argument may be set by CMOR (cmor_close and cmor_create_output_path).  These are the only cases when the value of any of the Fortran function’s arguments might be modified by CMOR.     
+If no error is encountered, some functions will return information needed by the user in subsequent calls to CMOR.  In almost all cases this information is indicated by the value of a single integer (in Fortran and Python it is from the function call, in C it is returned as an output argument).  <span style="color:green">There are two cases in the Fortran version of CMOR, however, when a string argument may be set by CMOR (cmor_close and cmor_create_output_path).  These are the only cases when the value of any of the Fortran function’s arguments might be modified by CMOR.</span>
 
