@@ -27,7 +27,7 @@ permalink: /mydoc_cmor3_conda/
     conda config --set ssl_verify False
     ```
 
-### Installing
+### Installing CMOR and PrePARE
 
   * Run the following commands
    
@@ -56,7 +56,7 @@ permalink: /mydoc_cmor3_conda/
 
 ### Testing
 
-  * Run the following commands
+  * Run the CMIP6 CV Python tests
    
     ```bash
     # Install cmor with cdms2 and testsrunner
@@ -82,7 +82,36 @@ permalink: /mydoc_cmor3_conda/
     python run_tests.py -v2 -H -n1 Test/test_python_CMIP6_CV*.py
     ```
 
-## Conda environment
+  * Run the full test suite for C, Fortran, and Python
+    
+    Install gcc and gfortran and linking environment variable
+
+    Linux:
+    ```bash
+    conda install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64
+    export LDSHARED_FLAGS="-shared -pthread"
+    ```
+    Mac:
+    ```bash
+    conda install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64
+    export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
+    ```
+    Build and run tests
+    ```bash
+    # Set prefix for configure step.
+    # ------------------------------------------------
+    export PREFIX=$(python -c "import sys; print(sys.prefix)")
+
+    # Configure the Makefile.
+    # ------------------------------------------------
+    ./configure --prefix=$PREFIX --with-python --with-uuid=$PREFIX --with-json-c=$PREFIX --with-udunits2=$PREFIX --with-netcdf=$PREFIX  --enable-verbose-test
+
+    # Run the tests with the Makefile (without rebuilding CMOR).
+    # ------------------------------------------------
+    make test -o cmor -o python
+    ```
+
+### Conda environment
 
   * Create your different CMOR environment with anaconda.
 
@@ -93,7 +122,7 @@ permalink: /mydoc_cmor3_conda/
 
   * [To learn more about conda environments](http://conda.pydata.org/docs/using/envs.html)
 
-## Obtaining Nighlty builds
+### Obtaining Nighlty builds
 
   * Create a dedicated environment for nightly (in between releases code):
     ```
