@@ -815,5 +815,21 @@ Python: set_terminate_signal(signal)
 
   * **[signal]** = an integer representing the signal code desired
 
+---
 
+### calculate_leadtime_coord()
+
+C: error_flag = int calculate_leadtime_coord(int var_id)
+{:.blue}
+
+*Description:* This is an internal function which creates an auxilliary "leadtime" (standard name "forecast_period") time axis encoding the forecast time, assuming it has been properly defined in the mip tables, and the scalar coordinate "reftime" (standard name "forecast_reference_time") has also been defined and populated. The function would then calculate the values of the leadtime coordinate, which are just offsets between the standard time coordinate ("verification time") and the reference time. Time bounds for the leadtime coordinate would be also generated if present in the verification time coordinate. Note that as it is part of internal API, it does not currently have Python or Fortran interfaces.
+
+*Arguments:*
+
+ * **var_id** = the cmor variable id
+
+Returns upon success:
+* C: 0
+{:.blue} 
+  
 ---
