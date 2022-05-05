@@ -74,7 +74,7 @@ DEPENDENCIES
   json (>= 2.3.0)
   kramdown (>= 2.3.0)
   kramdown-parser-gfm
-  nokogiri (>= 1.13.2)
+  nokogiri (>= 1.13.4)
   redcarpet (>= 3.5.1)
 
 BUNDLED WITH
