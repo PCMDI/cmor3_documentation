@@ -86,17 +86,24 @@ permalink: /mydoc_cmip6_user_input/
 * *branch_time_units_in_parent*:
 
 
-* *further_info_url*:       "http://furtherinfo.es-doc.org/<mip_era>/<institution_id><source_id><experiment_id><sub_experiment_id><variant_label>",
+* *further_info_url*:       "http://furtherinfo.es-doc.org/\<mip_era\>/\<institution_id\>\<source_id\>\<experiment_id\>\<sub_experiment_id\>\<variant_label\>",
 * *grid*:                  
 * *grid_label*:           
 * *nominal_resolution*:     
 * *run_variant*:      
 * *source_id*:       
 
-* *output_path_template*:    "<mip_era><activity_id><institution_id><source_id><experiment_id><member_id><table><variable_id><grid_label><version>",
+* *output_path_template*:    "\<mip_era\>\<activity_id\>\<institution_id\>\<source_id\>\<experiment_id\>\<member_id\>\<table\>\<variable_id\>\<grid_label\>\<version\>",
 
-* *output_file_template*:    "<variable_id><table><source_id><experiment_id><member_id><grid_label>[<time_range>]",
+* *output_file_template*:    "\<variable_id\>\<table\>\<source_id\>\<experiment_id\>\<member_id\>\<grid_label\>[\<time_range\>]",
 
-* *license*:                "One of 2 licenses: ----- CMIP6 model data produced by <Your CentreName> is licensed under a Creative Commons Attribution 'NonCommercial Share Alike' 4.0 International License (http://creativecommons.org/licenses/by/4.0/). Use of the data should be acknowledged following guidelines found at <what URL???> The data is hosted via the Earth System Grid Federation. Permissions beyond the scope of this license may be available at http://pcmdi.org/cmip5/terms-of-use.   Individuals using this data should register at ??? to receive notice of selected categories of errata and updates. Further information about this data, including some limitations, can be found at ???. The data producers and data providers make no warranty, either express or implied, including but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law. "
+* *license*: Use the following template
+    * "CMIP6 model data produced by **\<institution's name\>** is licensed under a **\<license\>**. Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file)**[ and at \<URL\>]**. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+
+    * Choose one of the following for **\<license\>**
+        * Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/)
+        * Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+        * Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-sa/4.0/)
+        * Creative Commons CC0 1.0 Universal Public Domain Dedication License (https://creativecommons.org/publicdomain/zero/1.0/)
 
 
