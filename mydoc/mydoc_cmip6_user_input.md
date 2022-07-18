@@ -95,10 +95,14 @@ permalink: /mydoc_cmip6_user_input/
 
 * *output_path_template*:    "\<mip_era\>\<activity_id\>\<institution_id\>\<source_id\>\<experiment_id\>\<member_id\>\<table\>\<variable_id\>\<grid_label\>\<version\>",
 
+* *version*: Set this to name the \<version\> part of the output path template.  If not set, then CMOR will use the current date as the version in the format of "vYYYYMMDD" (ex. "v20220718"),
+
 * *output_file_template*:    "\<variable_id\>\<table\>\<source_id\>\<experiment_id\>\<member_id\>\<grid_label\>[\<time_range\>]",
 
 * *license*: Use the following template
     * "CMIP6 model data produced by **\<institution's name\>** is licensed under a **\<license\>**. Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file)**[ and at \<URL\>]**. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+
+    * **[ and at \<URL\>]** is a placeholder for an optional URL for information on the data.
 
     * Choose one of the following for **\<license\>**
         * Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/)
