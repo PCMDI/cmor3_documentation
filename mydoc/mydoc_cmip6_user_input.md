@@ -106,8 +106,6 @@ permalink: /mydoc_cmip6_user_input/
 
     * Choose one of the following for **\<license\>**
         * Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/)
-        * Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-        * Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/by-sa/4.0/)
         * Creative Commons CC0 1.0 Universal Public Domain Dedication License (https://creativecommons.org/publicdomain/zero/1.0/)
 
 
