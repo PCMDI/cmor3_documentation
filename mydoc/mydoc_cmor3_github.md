@@ -52,16 +52,10 @@ permalink: /mydoc_cmor3_github/
 
   * Run the following command to build CMOR for your version of Python
 
-    For Python 2.7
+    For Python 3.9
    
     ```bash
-    conda create -q -n cmor_dev -c cdat/label/nightly -c conda-forge -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=2.7 $CONDA_COMPILERS testsrunner
-    ```
-
-    For Python 3.8
-   
-    ```bash
-    conda create -q -n cmor_dev -c cdat/label/nightly -c conda-forge -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.8 $CONDA_COMPILERS testsrunner
+    conda create -q -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.9 $CONDA_COMPILERS testsrunner
     ```
   * Activate the conda environment
 
@@ -114,6 +108,6 @@ permalink: /mydoc_cmor3_github/
    ```
   * Python tests
    ```bash
-   export PYTHONPATH=Test/
+   export PYTHONPATH=Test
    python run_tests.py -v2 -H -n1 Test/test_python_CMIP6_CV*.py
    ```

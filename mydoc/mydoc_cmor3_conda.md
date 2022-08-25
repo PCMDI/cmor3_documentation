@@ -61,7 +61,7 @@ permalink: /mydoc_cmor3_conda/
     ```bash
     # Install cmor with cdms2 and testsrunner
     # ------------------------------------------------
-    conda install -n CMOR -c cdat/label/nightly -c cdat -c conda-forge cdms2 testsrunner
+    conda install -n CMOR -c conda-forge -c cdat/label/nightly -c cdat cdms2 testsrunner
 
     # Clone the CMOR repository to your working directory.
     # ------------------------------------------------
