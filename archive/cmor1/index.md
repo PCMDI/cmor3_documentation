@@ -1,7 +1,7 @@
 ---
 title: CMOR 1 
 sidebar: mydoc_sidebar
-permalink: /archive/cmor1
+permalink: /archive/cmor1/
 keywords: archive, cmor1
 toc: false
 ---
