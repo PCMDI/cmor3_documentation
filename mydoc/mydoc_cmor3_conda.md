@@ -61,9 +61,9 @@ permalink: /mydoc_cmor3_conda/
   * Run the CMIP6 CV Python tests
    
     ```bash
-    # Install cmor with cdms2 and testsrunner
+    # Install cmor with testsrunner
     # ------------------------------------------------
-    conda install -n CMOR -c conda-forge -c cdat/label/nightly -c cdat cdms2 testsrunner
+    conda install -n CMOR -c conda-forge -c cdat/label/nightly -c cdat testsrunner
 
     # Clone the CMOR repository to your working directory.
     # ------------------------------------------------
