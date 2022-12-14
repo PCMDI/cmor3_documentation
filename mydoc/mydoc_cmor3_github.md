@@ -57,6 +57,12 @@ permalink: /mydoc_cmor3_github/
     ```bash
     conda create -q -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.9 $CONDA_COMPILERS testsrunner
     ```
+
+    For Python 3.11, omit the installation of CDMS2 as it doesn't support Python 3.11.
+   
+    ```bash
+    conda create -q -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy python=3.11 $CONDA_COMPILERS testsrunner
+    ```
   * Activate the conda environment
 
     ```bash
