@@ -63,6 +63,7 @@ GEM
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.8.0)
+    webrick (1.7.0)
 
 PLATFORMS
   x86_64-darwin-13
@@ -74,8 +75,9 @@ DEPENDENCIES
   json (>= 2.3.0)
   kramdown (>= 2.3.0)
   kramdown-parser-gfm
-  nokogiri (>= 1.13.9)
+  nokogiri (>= 1.13.10)
   redcarpet (>= 3.5.1)
+  webrick
 
 BUNDLED WITH
    2.3.3
