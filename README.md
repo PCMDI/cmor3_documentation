@@ -1,5 +1,5 @@
 # CMOR Documentation
-Hosted at cmor.llnl.gov
+Hosted at [cmor.llnl.gov](cmor.llnl.gov)
 
 ## Building and displaying the doc
 
