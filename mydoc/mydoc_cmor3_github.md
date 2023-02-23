@@ -28,14 +28,6 @@ permalink: /mydoc_cmor3_github/
     export PATH=${HOME}/anaconda/bin:${PATH} # for [ba]sh
     ``` 
 
-#### Bypassing firewalls
-
-  * If your institution has a firewall
-
-    ```bash
-    conda config --set ssl_verify False
-    ```
-
 #### Creating the conda environement with compilers and needed libraries
 
   * Depending on your os conda brings different compilers
@@ -52,21 +44,22 @@ permalink: /mydoc_cmor3_github/
 
   * Run the following command to build CMOR for your version of Python
 
-    For Python 3.9
-   
+    Python 3.11
+
     ```bash
-    conda create -q -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.9 $CONDA_COMPILERS testsrunner
+    conda create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python=3.11 $CONDA_COMPILERS
     ```
 
-    For Python 3.11, omit the installation of CDMS2 as it doesn't support Python 3.11.
+    For CDMS2 support, only Python 3.8, 3.9, and 3.10 are supported
    
     ```bash
-    conda create -q -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy python=3.11 $CONDA_COMPILERS testsrunner
+    conda create -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.10 $CONDA_COMPILERS
     ```
+
   * Activate the conda environment
 
     ```bash
-    source activate cmor_dev
+    conda activate cmor_dev
     ```
 
 ### Configuring cmor
@@ -106,14 +99,7 @@ permalink: /mydoc_cmor3_github/
 
 ### Testing the installation
 
-  Two sets of test can be used
-   
-  * C and Fortran tests
-   ```bash
-   make test
-   ```
-  * Python tests
-   ```bash
-   export PYTHONPATH=Test
-   python run_tests.py -v2 -H -n1 Test/test_python_CMIP6_CV*.py
-   ```
+  * Run C, Fortran, and Python tests
+    ```bash
+    make test
+    ```
