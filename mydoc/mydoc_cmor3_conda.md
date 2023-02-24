@@ -10,7 +10,8 @@ permalink: /mydoc_cmor3_conda/
 
   * **CMOR 3.7.1 on conda-forge has support for Python 3.8, 3.9, 3.10, and 3.11.**
 
-  * **The Python 3.11 build of CMOR 3.7.1 will NOT support CDMS2.**
+  * **CDMS2 is no longer supported by conda-forge or nightly builds.**
+  * **See the [source installation instructions](/mydoc_cmor3_github) to build CMOR with CDMS2 support.**
 
   * [Anaconda](https://www.continuum.io/)
 
@@ -20,14 +21,6 @@ permalink: /mydoc_cmor3_conda/
     export PATH=${HOME}/anaconda/bin:${PATH} # for [ba]sh
     setenv PATH ${HOME}/anaconda/bin:${PATH} # for [t]csh
     ``` 
-
-### Bypassing firewalls
-
-  * If your institution has a firewall
-
-    ```
-    conda config --set ssl_verify False
-    ```
 
 ### Installing CMOR and PrePARE
 
@@ -43,10 +36,6 @@ permalink: /mydoc_cmor3_conda/
     # ------------------------------------------------
     mkdir CMIP6_work
     cd  CMIP6_work
-
-    # Disable SSL verification (firewall only).
-    # -----------------------------------------
-    export GIT_SSL_NO_VERIFY=true
     git clone https://github.com/PCMDI/cmip6-cmor-tables.git
 
     # Note:
@@ -58,13 +47,11 @@ permalink: /mydoc_cmor3_conda/
 
 ### Testing
 
-  * Run the CMIP6 CV Python tests
+  * Run the full test suite for C, Fortran, and Python
    
-    ```bash
-    # Install cmor with testsrunner
-    # ------------------------------------------------
-    conda install -n CMOR -c conda-forge -c cdat/label/nightly -c cdat testsrunner
+    Clone CMOR code and CMIP6 tables
 
+    ```bash
     # Clone the CMOR repository to your working directory.
     # ------------------------------------------------
     git clone https://github.com/PCMDI/cmor.git
@@ -74,17 +61,7 @@ permalink: /mydoc_cmor3_conda/
     # ------------------------------------------------
     git submodule init
     git submodule update
-
-    # Set PYTHONPATH to the Test directory.
-    # ------------------------------------------------
-    export PYTHONPATH=Test/
-
-    # Run the tests.
-    # ------------------------------------------------
-    python run_tests.py -v2 -H -n1 Test/test_python_CMIP6_CV*.py
     ```
-
-  * Run the full test suite for C, Fortran, and Python
     
     Install gcc and gfortran and linking environment variable
 
