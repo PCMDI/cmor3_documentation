@@ -8,7 +8,7 @@ permalink: /mydoc_cmor3_conda/
 
 ### All Platforms System Requirements
 
-  * **CMOR 3.7.3 on conda-forge has support for Python 3.8, 3.9, 3.10, 3.11, and 3.12.**
+  * **CMOR 3.8.0 on conda-forge has support for Python 3.8, 3.9, 3.10, 3.11, and 3.12.**
 
   * **CDMS2 is no longer supported by conda-forge or nightly builds.**
   * **See the [source installation instructions](/mydoc_cmor3_github) to build CMOR with CDMS2 support.**
