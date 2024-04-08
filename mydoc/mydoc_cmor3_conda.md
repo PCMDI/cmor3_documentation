@@ -108,3 +108,9 @@ permalink: /mydoc_cmor3_conda/
     conda create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor
     source activate [YOUR_ENV_NAME_HERE]
     ```
+
+  * Create an environment with compilers for development/testing:
+    ```
+    conda create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor gcc_linux-64 gfortran_linux-64
+    source activate [YOUR_ENV_NAME_HERE]
+    ```
