@@ -1,0 +1,31 @@
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files
+# https://github.com/citation-file-format/citation-file-format/blob/main/schema-guide.md#definitionsperson
+
+cff-version: 1.2.0
+message: "If you use the CMOR3 software, please cite it using the metadata from this file"
+authors:
+- family-names: "Doutriaux"
+  given-names: "Charles"
+  orcid: "https://orcid.org/0009-0002-6932-3169"
+  affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
+- family-names: "Taylor"
+  given-names: "Karl E."
+  orcid: "https://orcid.org/0000-0002-6491-2135"
+  affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
+- family-names: "Mauzey"
+  given-names: "Chris"
+  orcid: "https://orcid.org/0000-0003-1156-6774"
+  affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
+- family-names: "Nadeau"
+  given-names: "Denis"
+  orcid: "https://orcid.org/0000-0002-9622-3289"
+  affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
+- family-names: "Durack"
+  given-names: "Paul J."
+  orcid: "https://orcid.org/0000-0003-2835-1438"
+  affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
+title: "CMOR v3.0 Users Guide (Climate Model Output Rewriter; CMOR3)"
+version: 3.9.0
+doi: 10.5281/zenodo.179384 
+date-released: 2024-08-xx
+url: "https://github.com/PCMDI/cmor3_documentation"
