@@ -101,6 +101,11 @@ a[href*="mailto"]::after, a[data-toggle="tooltip"]::after, a[href].noCrossRef::a
     color: gray;
 }
 
+.printAuthors {
+    font-size:14px;
+    color: gray;
+}
+
 .alert a {
     text-decoration: none !important;
 }
