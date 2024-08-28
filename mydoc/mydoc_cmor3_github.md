@@ -50,7 +50,7 @@ permalink: /mydoc_cmor3_github/
     conda create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python=3.11 $CONDA_COMPILERS
     ```
 
-    For CDMS2 support, only Python 3.8, 3.9, and 3.10 are supported
+    For CDMS2 support, only Python 3.9 and 3.10 are supported
    
     ```bash
     conda create -n cmor_dev -c conda-forge -c cdat/label/nightly -c cdat six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl lazy-object-proxy cdms2 python=3.10 $CONDA_COMPILERS
