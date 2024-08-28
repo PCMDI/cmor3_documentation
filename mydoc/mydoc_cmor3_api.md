@@ -500,7 +500,7 @@ Python: set_deflate(var_id, shuffle, deflate, deflate_level)
 {:.coral} 
 
 
-*Description:* Sets netCDF4 shuffle and compression on a cmor variable.
+*Description:* Sets netCDF4 shuffle and compression on a CMOR variable.
 
 *Arguments*:
 
@@ -511,6 +511,83 @@ Python: set_deflate(var_id, shuffle, deflate, deflate_level)
   * **deflate** = if true, turn on the deflate filter at the level specified by the deflate_level parameter
 
   * **deflate_level** = if the deflate parameter is non-zero, deflate variable using value. Must be between 0 and 9
+
+Returns upon success:
+
+* Fortran: 0
+{:.green}
+
+* C: 0
+{:.blue} 
+
+* Python: 0
+{:.coral} 
+
+---
+
+### cmor_set_zstandard()
+
+Fortran: error_flag = cmor_set_zstandard(var_id, zstandard_level)
+{:.green}
+
+C: error_flag = cmor_set_zstandard(int var_id, int zstandard_level) 
+{:.blue} 
+
+Python: set_zstandard(var_id, zstandard_level)
+{:.coral} 
+
+
+*Description:* Sets netCDF4 Zstandard compression level on a CMOR variable.
+CMOR's deflate compression must be disabled (use cmor_set_deflate to set to false) to enable the use of Zstandard compression on the netCDF file's data variable.
+
+*Arguments*:
+
+  * **var_id** = the cmor variable id
+
+  * **zstandard_level** = Compression level.  Must be between -131072 and 22
+
+Returns upon success:
+
+* Fortran: 0
+{:.green}
+
+* C: 0
+{:.blue} 
+
+* Python: 0
+{:.coral} 
+
+---
+
+### cmor_set_quantize()
+
+Fortran: error_flag = cmor_set_quantize(var_id, quantize_mode, quantize_nsd)
+{:.green}
+
+C: error_flag = cmor_set_quantize(int var_id, int quantize_mode, int quantize_nsd) 
+{:.blue} 
+
+Python: set_quantize(var_id, quantize_mode, quantize_nsd)
+{:.coral} 
+
+
+*Description:* Sets netCDF4 quantization mode and number of significant digits/bits preserved.
+
+*Arguments*:
+
+  * **var_id** = the cmor variable id
+
+  * **quantize_mode** = Quantization mode.  Can be set to the following values.
+    - 0: No quantization mode
+    - 1: BitGroom
+    - 2: Granular BitRound
+    - 3: BitRound
+
+  * **quantize_nsd** = Number of significant digits.  If quantize_mode is set to
+                    1 or 2, then the value can be set from 1 to 7 for floats
+                    and 1 to 23 for doubles. If quantize_mode is set to 3, then
+                    the value can be set from 1 to 15 for floats and 1 to 52
+                    for doubles.  The value is ignore if quantize_mode is 0.
 
 Returns upon success:
 
