@@ -8,17 +8,17 @@ permalink: /mydoc_cmor3_python/
 ### CMOR Input Files
 
 
-* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/master/Test/CMOR_input_example.json)
-* [CMIP6_coordinate.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_coordinate.json)
-* [CMIP6_formula_terms.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_formula_terms.json)
-* [CMIP6_CV.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json)
-* [CMIP6_Amon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_Amon.json)
-* [CMIP6_Omon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_Omon.json)
+* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/main/Test/CMOR_input_example.json)
+* [CMIP6_coordinate.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_coordinate.json)
+* [CMIP6_formula_terms.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_formula_terms.json)
+* [CMIP6_CV.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_CV.json)
+* [CMIP6_Amon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_Amon.json)
+* [CMIP6_Omon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_Omon.json)
 
 
 ### Example 1: Python source code
 
-* [test_doc.py](https://github.com/PCMDI/cmor/blob/master/Test/test_doc.py)
+* [test_doc.py](https://github.com/PCMDI/cmor/blob/main/Test/test_doc.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b>
 </summary>

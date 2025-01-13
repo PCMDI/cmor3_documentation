@@ -8,7 +8,7 @@ permalink: /mydoc_cmor3_c/
 
 ### CMOR user input
 
-* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/master/Test/CMOR_input_example.json)
+* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/main/Test/CMOR_input_example.json)
 
 <details><summary markdown="span"><b>Click to expand JSON file</b></summary>
 
@@ -96,8 +96,8 @@ permalink: /mydoc_cmor3_c/
 
 ### C source code
 
-* [ipcc_test_code.c](https://github.com/PCMDI/cmor/blob/master/Test/ipcc_test_code.c)
-* [reader_2D_3D.h](https://github.com/PCMDI/cmor/blob/master/Test/reader_2D_3D.h)
+* [ipcc_test_code.c](https://github.com/PCMDI/cmor/blob/main/Test/ipcc_test_code.c)
+* [reader_2D_3D.h](https://github.com/PCMDI/cmor/blob/main/Test/reader_2D_3D.h)
 
 <details><summary markdown="span"><b>Click to expand C code</b></summary>
 

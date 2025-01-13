@@ -64,7 +64,7 @@ Python: dataset_json(name)
 
 *Arguments*:
 
-  * **name**:  JSON file which contains all information needed by CMOR in the form of key:value.   Here is an example: [CMIP6_input_example.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_input_example.json)
+  * **name**:  JSON file which contains all information needed by CMOR in the form of key:value.   Here is an example: [CMIP6_input_example.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_input_example.json)
 
 Returns upon success:
 
