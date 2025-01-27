@@ -8,17 +8,17 @@ permalink: /mydoc_cmor3_python/
 ### CMOR Input Files
 
 
-* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/master/Test/CMOR_input_example.json)
-* [CMIP6_coordinate.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_coordinate.json)
-* [CMIP6_formula_terms.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_formula_terms.json)
-* [CMIP6_CV.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json)
-* [CMIP6_Amon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_Amon.json)
-* [CMIP6_Omon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_Omon.json)
+* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/main/Test/CMOR_input_example.json)
+* [CMIP6_coordinate.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_coordinate.json)
+* [CMIP6_formula_terms.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_formula_terms.json)
+* [CMIP6_CV.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_CV.json)
+* [CMIP6_Amon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_Amon.json)
+* [CMIP6_Omon.json](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_Omon.json)
 
 
 ### Example 1: Python source code
 
-* [test_doc.py](https://github.com/PCMDI/cmor/blob/master/Test/test_doc.py)
+* [test_doc.py](https://github.com/PCMDI/cmor/blob/main/Test/test_doc.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b>
 </summary>
@@ -1302,6 +1302,292 @@ data:
   52.9, 53.3, 53.3, 53.7,
   51.7, 51.7, 52.1, 52.5,
   50.1, 50.5, 50.9, 51.3 ;
+}
+
+```
+</details>
+
+### Example 7: Treatment of Grid Coordinates
+
+* [example7.py](/mydoc/examples/example7.py)
+
+<details><summary markdown="span"><b>Click to expand Python code</b></summary>
+
+```python
+import cmor
+import numpy
+import os
+
+
+var_data = numpy.random.random((3, 4, 2)) + 34.
+
+x = numpy.arange(4, dtype=float)
+x_bnds = numpy.array([[x_ - 0.5, x_ + 0.5] for x_ in x])
+y = numpy.arange(3, dtype=float)
+y_bnds = numpy.array([[y_ - 0.5, y_ + 0.5] for y_ in y])
+
+lat = numpy.array([10, 20, 30]).reshape((3, 1))
+lat = numpy.tile(lat, (1, 4))
+lon = numpy.array([0, 90, 180, 270])
+lon = numpy.tile(lon, (3, 1))
+lon_bnds = numpy.zeros((3, 4, 4))
+lat_bnds = numpy.zeros((3, 4, 4))
+
+for j in range(3):
+    for i in range(4):
+        lon_bnds[j, i, 0] = (lon[j, i] - 45) % 360
+        lon_bnds[j, i, 1] = lon[j, i]
+        lon_bnds[j, i, 2] = (lon[j, i] + 45) % 360
+        lon_bnds[j, i, 3] = lon[j, i]
+        lat_bnds[j, i, 0] = lat[j, i]
+        lat_bnds[j, i, 1] = lat[j, i] - 5
+        lat_bnds[j, i, 2] = lat[j, i]
+        lat_bnds[j, i, 3] = lat[j, i] + 5
+
+time = numpy.array([0, 1])
+time_bnds = numpy.array([0, 1, 2])
+
+ipth = opth = 'Test'
+cmor.setup(inpath=ipth,
+           set_verbosity=cmor.CMOR_NORMAL,
+           netcdf_file_action=cmor.CMOR_REPLACE,
+           exit_control=cmor.CMOR_EXIT_ON_MAJOR)
+cmor.dataset_json('CMOR_input_example.json')
+
+# First, load the grids table to set up x and y axes and the lat-long grid
+grid_table_id = cmor.load_table('CMIP6_grids.json')
+cmor.set_table(grid_table_id)
+
+y_axis_id = cmor.axis(table_entry='y_deg',
+                      units='degrees',
+                      coord_vals=y,
+                      cell_bounds=y_bnds)
+x_axis_id = cmor.axis(table_entry='x_deg',
+                      units='degrees',
+                      coord_vals=x,
+                      cell_bounds=x_bnds)
+
+grid_id = cmor.grid(axis_ids=[y_axis_id, x_axis_id],
+                    latitude=lat,
+                    longitude=lon,
+                    latitude_vertices=lat_bnds,
+                    longitude_vertices=lon_bnds)
+
+# Now, load the Omon table to set up the time axis and variable
+omon_table_id = cmor.load_table('CMIP6_Omon.json')
+cmor.set_table(omon_table_id)
+
+time_axis_id = cmor.axis(table_entry='time',
+                         units='months since 1980',
+                         coord_vals=time,
+                         cell_bounds=time_bnds)
+
+var_id = cmor.variable(table_entry='sos',
+                       units='0.001',
+                       axis_ids=[grid_id, time_axis_id])
+
+cmor.write(var_id, var_data, 2)
+
+filename = cmor.close(var_id, file_name=True)
+print("Stored in:", filename)
+cmor.close()
+os.system("ncdump {}".format(filename))
+
+```
+
+</details>
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
+
+```
+netcdf sos_Omon_PCMDI-test-1-0_piControl-withism_r3i1p1f1_gn_198001-198002 {
+dimensions:
+        time = UNLIMITED ; // (2 currently)
+        y = 3 ;
+        x = 4 ;
+        bnds = 2 ;
+        vertices = 4 ;
+variables:
+        double time(time) ;
+                time:bounds = "time_bnds" ;
+                time:units = "days since 1980" ;
+                time:calendar = "360_day" ;
+                time:axis = "T" ;
+                time:long_name = "time" ;
+                time:standard_name = "time" ;
+        double time_bnds(time, bnds) ;
+        double y(y) ;
+                y:bounds = "y_bnds" ;
+                y:units = "degrees" ;
+                y:axis = "Y" ;
+                y:long_name = "y coordinate of projection" ;
+                y:standard_name = "projection_y_coordinate" ;
+        double y_bnds(y, bnds) ;
+        double x(x) ;
+                x:bounds = "x_bnds" ;
+                x:units = "degrees" ;
+                x:axis = "X" ;
+                x:long_name = "x coordinate of projection" ;
+                x:standard_name = "projection_x_coordinate" ;
+        double x_bnds(x, bnds) ;
+        double latitude(y, x) ;
+                latitude:standard_name = "latitude" ;
+                latitude:long_name = "latitude" ;
+                latitude:units = "degrees_north" ;
+                latitude:missing_value = 1.e+20 ;
+                latitude:_FillValue = 1.e+20 ;
+                latitude:bounds = "vertices_latitude" ;
+        double longitude(y, x) ;
+                longitude:standard_name = "longitude" ;
+                longitude:long_name = "longitude" ;
+                longitude:units = "degrees_east" ;
+                longitude:missing_value = 1.e+20 ;
+                longitude:_FillValue = 1.e+20 ;
+                longitude:bounds = "vertices_longitude" ;
+        double vertices_latitude(y, x, vertices) ;
+                vertices_latitude:units = "degrees_north" ;
+                vertices_latitude:missing_value = 1.e+20 ;
+                vertices_latitude:_FillValue = 1.e+20 ;
+        double vertices_longitude(y, x, vertices) ;
+                vertices_longitude:units = "degrees_east" ;
+                vertices_longitude:missing_value = 1.e+20 ;
+                vertices_longitude:_FillValue = 1.e+20 ;
+        float sos(time, y, x) ;
+                sos:standard_name = "sea_surface_salinity" ;
+                sos:long_name = "Sea Surface Salinity" ;
+                sos:comment = "Sea water salinity is the salt content of sea water, often on the Practical Salinity Scale of 1978. However, the unqualified term \'salinity\' is generic and does not necessarily imply any particular method of calculation. The units of salinity are dimensionless and the units attribute should normally be given as 1e-3 or 0.001 i.e. parts per thousand." ;
+                sos:units = "0.001" ;
+                sos:cell_methods = "area: mean where sea time: mean" ;
+                sos:cell_measures = "area: areacello" ;
+                sos:history = "2025-01-13T20:25:29Z altered by CMOR: Reordered dimensions, original order: y x time. 2025-01-13T20:25:29Z altered by CMOR: Converted type from \'d\' to \'f\'." ;
+                sos:missing_value = 1.e+20f ;
+                sos:_FillValue = 1.e+20f ;
+                sos:coordinates = "latitude longitude" ;
+
+// global attributes:
+                :Conventions = "CF-1.7 CMIP-6.2" ;
+                :activity_id = "ISMIP6" ;
+                :branch_method = "no parent" ;
+                :branch_time_in_child = 59400. ;
+                :branch_time_in_parent = 0. ;
+                :contact = "Python Coder (coder@a.b.c.com)" ;
+                :creation_date = "2025-01-13T20:25:29Z" ;
+                :data_specs_version = "01.00.33" ;
+                :experiment = "preindustrial control with interactive ice sheet" ;
+                :experiment_id = "piControl-withism" ;
+                :external_variables = "areacello" ;
+                :forcing_index = 1 ;
+                :frequency = "mon" ;
+                :further_info_url = "https://furtherinfo.es-doc.org/CMIP6.PCMDI.PCMDI-test-1-0.piControl-withism.none.r3i1p1f1" ;
+                :grid = "native atmosphere regular grid (3x4 latxlon)" ;
+                :grid_label = "gn" ;
+                :history = "2025-01-13T20:25:29Z ;rewrote data to be consistent with ISMIP6 for variable sos found in table Omon.;\n",
+                        "Output from archivcl_A1.nce/giccm_03_std_2xCO2_2256." ;
+                :initialization_index = 1 ;
+                :institution = "Program for Climate Model Diagnosis and Intercomparison, Lawrence Livermore National Laboratory, Livermore, CA 94550, USA" ;
+                :institution_id = "PCMDI" ;
+                :mip_era = "CMIP6" ;
+                :nominal_resolution = "10000 km" ;
+                :parent_activity_id = "no parent" ;
+                :parent_experiment_id = "no parent" ;
+                :parent_mip_era = "no parent" ;
+                :parent_source_id = "no parent" ;
+                :parent_time_units = "no parent" ;
+                :parent_variant_label = "no parent" ;
+                :physics_index = 1 ;
+                :product = "model-output" ;
+                :realization_index = 3 ;
+                :realm = "ocean" ;
+                :references = "Model described by Koder and Tolkien (J. Geophys. Res., 2001, 576-591).  Also see http://www.GICC.su/giccm/doc/index.html.  The ssp245 simulation is described in Dorkey et al. \'(Clim. Dyn., 2003, 323-357.)\'" ;
+                :run_variant = "3rd realization" ;
+                :source = "PCMDI-test 1.0 (1989): \n",
+                        "aerosol: none\n",
+                        "atmos: Earth1.0-gettingHotter (360 x 180 longitude/latitude; 50 levels; top level 0.1 mb)\n",
+                        "atmosChem: none\n",
+                        "land: Earth1.0\n",
+                        "landIce: none\n",
+                        "ocean: BlueMarble1.0-warming (360 x 180 longitude/latitude; 50 levels; top grid cell 0-10 m)\n",
+                        "ocnBgchem: none\n",
+                        "seaIce: Declining1.0-warming (360 x 180 longitude/latitude)" ;
+                :source_id = "PCMDI-test-1-0" ;
+                :source_type = "AOGCM ISM AER" ;
+                :sub_experiment = "none" ;
+                :sub_experiment_id = "none" ;
+                :table_id = "Omon" ;
+                :table_info = "Creation Date:(18 November 2020) MD5:1a7c21fe7a3ec7429780675800b70460" ;
+                :title = "PCMDI-test-1-0 output prepared for CMIP6" ;
+                :tracking_id = "hdl:21.14100/d2dac814-dcd1-4da6-a6f9-e35ebb1d1bcb" ;
+                :variable_id = "sos" ;
+                :variant_label = "r3i1p1f1" ;
+                :license = "CMIP6 model data produced by Lawrence Livermore PCMDI is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at https:///pcmdi.llnl.gov/. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
+                :cmor_version = "3.9.0" ;
+data:
+
+ time = 15, 45 ;
+
+ time_bnds =
+  0, 30,
+  30, 60 ;
+
+ y = 0, 1, 2 ;
+
+ y_bnds =
+  -0.5, 0.5,
+  0.5, 1.5,
+  1.5, 2.5 ;
+
+ x = 0, 1, 2, 3 ;
+
+ x_bnds =
+  -0.5, 0.5,
+  0.5, 1.5,
+  1.5, 2.5,
+  2.5, 3.5 ;
+
+ latitude =
+  10, 10, 10, 10,
+  20, 20, 20, 20,
+  30, 30, 30, 30 ;
+
+ longitude =
+  0, 90, 180, 270,
+  0, 90, 180, 270,
+  0, 90, 180, 270 ;
+
+ vertices_latitude =
+  10, 5, 10, 15,
+  10, 5, 10, 15,
+  10, 5, 10, 15,
+  10, 5, 10, 15,
+  20, 15, 20, 25,
+  20, 15, 20, 25,
+  20, 15, 20, 25,
+  20, 15, 20, 25,
+  30, 25, 30, 35,
+  30, 25, 30, 35,
+  30, 25, 30, 35,
+  30, 25, 30, 35 ;
+
+ vertices_longitude =
+  315, 0, 45, 0,
+  45, 90, 135, 90,
+  135, 180, 225, 180,
+  225, 270, 315, 270,
+  315, 0, 45, 0,
+  45, 90, 135, 90,
+  135, 180, 225, 180,
+  225, 270, 315, 270,
+  315, 0, 45, 0,
+  45, 90, 135, 90,
+  135, 180, 225, 180,
+  225, 270, 315, 270 ;
+
+ sos =
+  34.8876, 34.84557, 34.84164, 34.83435,
+  34.9416, 34.08398, 34.33438, 34.99736,
+  34.23587, 34.22417, 34.60325, 34.67004,
+  34.32861, 34.72874, 34.52488, 34.19158,
+  34.48695, 34.07372, 34.91237, 34.68412,
+  34.53342, 34.16178, 34.93912, 34.50451 ;
 }
 
 ```

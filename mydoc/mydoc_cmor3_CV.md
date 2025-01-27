@@ -35,7 +35,7 @@ permalink: /mydoc_cmor3_CV/
 
 ### CMIP6 required global attributes
 
-* [CMIP6_CV.json](https://github.com/PCMDI/cmor/blob/master/TestTables/CMIP6_CV.json)
+* [CMIP6_CV.json](https://github.com/PCMDI/cmor/blob/main/TestTables/CMIP6_CV.json)
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 

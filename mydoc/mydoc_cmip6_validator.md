@@ -54,14 +54,14 @@ where:
 
 PrePARE will verify that all attributes in the input file are present and conform to CMIP6 for publication into ESGF.  We also recommand running the python program [cfchecker](https://pypi.python.org/pypi/cfchecker) created by the University of Reading in the UK to confirm that your file is CF-1 compliant.
 
-  * In order to validate all CMIP6 required attributes by PrePARE,  a [Controlled Vocabulary file](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json) is read by the program where a JSON dictionnary called  ["required_global_attributes"](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json#L3) point to a list of strings.  Each element of that list corresponds to a global attribute.  
-  * PrePARE can also use regular expressions to validate the value of the some global attributes.  Here is an [example](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json#L6343-L6344) used for variant_label.
+  * In order to validate all CMIP6 required attributes by PrePARE, a [Controlled Vocabulary file](https://github.com/PCMDI/cmip6-cmor-tables/blob/main/Tables/CMIP6_CV.json) is read by the program where a JSON dictionary called  ["required_global_attributes"](https://github.com/PCMDI/cmip6-cmor-tables/blob/a46dcbf17ec5e11af23dc2d55107f5e52afbcade/Tables/CMIP6_CV.json#L3) points to a list of strings.  Each element of that list corresponds to a global attribute.  
+  * PrePARE can also use regular expressions to validate the value of the some global attributes.  Here is an [example](https://github.com/PCMDI/cmip6-cmor-tables/blob/a46dcbf17ec5e11af23dc2d55107f5e52afbcade/Tables/CMIP6_CV.json#L11554-L11555) used for variant_label.
 
-  * Institutions and institution_ids need to be registered into a list.   PrePARE will only accept institutions which have been pre-registered for CMIP6 publication into ESGF.   Click [here](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json#L65) for the list of institutions.  If you wish to register your institution write to the [cmor mailing list](mailto:cmor@listserv.llnl.gov).
+  * Institutions and institution_ids need to be registered into a list.   PrePARE will only accept institutions which have been pre-registered for CMIP6 publication into ESGF.   Click [here](https://github.com/PCMDI/cmip6-cmor-tables/blob/a46dcbf17ec5e11af23dc2d55107f5e52afbcade/Tables/CMIP6_CV.json#L74) for the list of institutions.  If you wish to register your institution write to the [cmor mailing list](mailto:cmor@listserv.llnl.gov).
 
-  * Source and Source ID also need to be registered for CMIP6 publication.  Here is the [list](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json#L93) of registered sources.
+  * Source and Source ID also need to be registered for CMIP6 publication.  Here is the [list](https://github.com/PCMDI/cmip6-cmor-tables/blob/a46dcbf17ec5e11af23dc2d55107f5e52afbcade/Tables/CMIP6_CV.json#L125) of registered sources.
 
-  * Only experiments found in the Controlled Vocabulary files are accepted for CMIP6 publication. A list of [experiment_ids](https://github.com/PCMDI/cmip6-cmor-tables/blob/master/Tables/CMIP6_CV.json#L548) have been pre-defined including mandatory attributes.  A warning will be displayed if one experiment attribute is missing or is not properly set by your program.
+  * Only experiments found in the Controlled Vocabulary files are accepted for CMIP6 publication. A list of [experiment_ids](https://github.com/PCMDI/cmip6-cmor-tables/blob/a46dcbf17ec5e11af23dc2d55107f5e52afbcade/Tables/CMIP6_CV.json#L3708) have been pre-defined including mandatory attributes.  A warning will be displayed if one experiment attribute is missing or is not properly set by your program.
 
   * grid and nominal_resolution are mandatory global attributes in CMIP6.  PrePARE will make sure that these attributes are conformed to one of the following syntax:
 

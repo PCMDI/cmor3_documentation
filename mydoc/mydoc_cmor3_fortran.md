@@ -8,7 +8,7 @@ permalink: /mydoc_cmor3_fortran/
 
 ### CMOR user input
 
-* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/master/Test/CMOR_input_example.json)
+* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/main/Test/CMOR_input_example.json)
 
 <details><summary markdown="span"><b>Click to expand json file</b></summary>
 
@@ -93,8 +93,8 @@ permalink: /mydoc_cmor3_fortran/
 
 ### Fortran source code
 
-* [ipcc_test_code.f90](https://github.com/PCMDI/cmor/blob/master/Test/ipcc_test_code.f90)
-* [reader_2D_3D.f90](https://github.com/PCMDI/cmor/blob/master/Test/reader_2D_3D.f90)
+* [ipcc_test_code.f90](https://github.com/PCMDI/cmor/blob/main/Test/ipcc_test_code.f90)
+* [reader_2D_3D.f90](https://github.com/PCMDI/cmor/blob/main/Test/reader_2D_3D.f90)
 
 <details><summary markdown="span"><b>Click to expand Fortran code</b></summary>
 
