@@ -1,22 +1,22 @@
 ---
-title: Anaconda installation
-tags: [conda]
-keywords: conda
+title: Mamba installation
+tags: [conda, mamba]
+keywords: conda, mamba
 sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_conda/
 ---
 
-### All Platforms System Requirements
+### Installing Miniforge
 
   * **CMOR 3.9.0 on conda-forge has support for Python 3.9, 3.10, 3.11, and 3.12.**
 
-  * [Anaconda](https://www.continuum.io/)
+  * Download the [Miniforge installer](https://conda-forge.org/download/) for your system.
+    * CMOR is currently only supported for Linux and macOS x86_64, and macOS arm64 (Apple Silicon)
 
-  * Make sure anaconda is in your PATH (assuming ananconda is installed in ${HOME}/anaconda)
+  * Start the install with the following command
 
-    ```sh
-    export PATH=${HOME}/anaconda/bin:${PATH} # for [ba]sh
-    setenv PATH ${HOME}/anaconda/bin:${PATH} # for [t]csh
+    ```bash
+    bash Miniforge3-$(uname)-$(uname -m).sh
     ``` 
 
 ### Installing CMOR and PrePARE
@@ -26,8 +26,8 @@ permalink: /mydoc_cmor3_conda/
     ```bash
     # install cmor
     # ------------------------------------------------
-    conda create -n CMOR -c conda-forge cmor
-    conda activate CMOR
+    mamba create -n CMOR -c conda-forge cmor
+    mamba activate CMOR
 
     # Clone the CMIP6 table to your working directory.
     # ------------------------------------------------
@@ -64,12 +64,12 @@ permalink: /mydoc_cmor3_conda/
 
     Linux:
     ```bash
-    conda install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64
+    mamba install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64
     export LDSHARED_FLAGS="-shared -pthread"
     ```
     Mac:
     ```bash
-    conda install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64
+    mamba install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64
     export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
     ```
     Build and run tests
@@ -92,22 +92,22 @@ permalink: /mydoc_cmor3_conda/
   * Create your different CMOR environment with anaconda.
 
     ```
-    conda create -n [YOUR_ENV_NAME_HERE] -c conda-forge cmor
-    source activate [YOUR_ENV_NAME_HERE]
+    mamba create -n [YOUR_ENV_NAME_HERE] -c conda-forge cmor
+    mamba activate [YOUR_ENV_NAME_HERE]
     ```
 
-  * [To learn more about conda environments](http://conda.pydata.org/docs/using/envs.html)
+  * [To learn more about mamba environments](https://mamba.readthedocs.io/en/latest/user_guide/concepts.html)
 
 ### Obtaining Nighlty builds
 
   * Create a dedicated environment for nightly (in between releases code):
     ```
-    conda create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor
-    source activate [YOUR_ENV_NAME_HERE]
+    mamba create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor
+    mamba activate [YOUR_ENV_NAME_HERE]
     ```
 
   * Create an environment with compilers for development/testing:
     ```
-    conda create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor gcc_linux-64 gfortran_linux-64
-    source activate [YOUR_ENV_NAME_HERE]
+    mamba create -n [YOUR_ENV_NAME_HERE] -c pcmdi/label/nightly -c conda-forge cmor gcc_linux-64 gfortran_linux-64
+    mamba activate [YOUR_ENV_NAME_HERE]
     ```
