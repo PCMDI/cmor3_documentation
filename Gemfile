@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'jekyll', ">= 4.3.3"
 gem "liquid", ">= 4.0.4"
-gem "nokogiri", ">= 1.16.6"
+gem "nokogiri", ">= 1.18.3"
 gem "json", ">= 2.7.2"
 gem "kramdown", ">= 2.4.0"
 gem "kramdown-parser-gfm"
