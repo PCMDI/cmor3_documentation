@@ -16,21 +16,22 @@ permalink: /mydoc_cmor3_github/
     git submodule update
     ```
 
-### Anaconda System Requirements (if building using anaconda compilers)
+### Installing Miniforge
 
+  * **CMOR 3.9.0 on conda-forge has support for Python 3.9, 3.10, 3.11, and 3.12.**
 
-#### Getting Anaconda
+  * Download the [Miniforge installer](https://conda-forge.org/download/){:target="_blank"} for your system.
+    * CMOR is currently only supported for Linux and macOS x86_64, and macOS arm64 (Apple Silicon)
 
-  * [Anaconda](https://www.continuum.io/)
-  * Make sure anaconda is in your PATH (assuming ananconda is installed in ${HOME}/anaconda)
+  * Start the install with the following command
 
     ```bash
-    export PATH=${HOME}/anaconda/bin:${PATH} # for [ba]sh
+    bash Miniforge3-$(uname)-$(uname -m).sh
     ``` 
 
-#### Creating the conda environement with compilers and needed libraries
+#### Creating the mamba environement with compilers and needed libraries
 
-  * Depending on your os conda brings different compilers
+  * Depending on your os mamba brings different compilers
 
     For Linux
     ```bash
@@ -47,13 +48,13 @@ permalink: /mydoc_cmor3_github/
     Python 3.11
 
     ```bash
-    conda create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python=3.11 $CONDA_COMPILERS
+    mamba create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python=3.11 $CONDA_COMPILERS
     ```
 
-  * Activate the conda environment
+  * Activate the mamba environment
 
     ```bash
-    conda activate cmor_dev
+    mamba activate cmor_dev
     ```
 
 ### Configuring cmor

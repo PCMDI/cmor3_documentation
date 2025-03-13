@@ -48,7 +48,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Anaconda
+    - title: Miniforge/Mamba
       url: /mydoc_cmor3_conda/
       output: web, pdf
 

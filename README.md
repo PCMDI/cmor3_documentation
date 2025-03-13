@@ -9,11 +9,11 @@ This documentation is made with [Jekyll](https://jekyllrb.com/).
 
 Our preferred method of installing Jekyll is through a Conda environment.
 
-Download and install [Anaconda](https://www.anaconda.com/products/distribution), and then use the following commands.
+Download and install [Miniforge](https://conda-forge.org/download), and then use the following commands.
 
 ```
-conda create -n jekyll_env -c conda-forge ruby clang_osx-64 clangxx_osx-64
-conda activate jekyll_env
+mamba create -n jekyll_env -c conda-forge ruby clang_osx-64 clangxx_osx-64
+mamba activate jekyll_env
 bundle install
 bundle exec jekyll serve
 ```
