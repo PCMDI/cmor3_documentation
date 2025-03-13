@@ -87,9 +87,9 @@ permalink: /mydoc_cmor3_conda/
     make test -o cmor -o python
     ```
 
-### Conda environment
+### Mamba environment
 
-  * Create your different CMOR environment with anaconda.
+  * Create your different CMOR environment with mamba.
 
     ```
     mamba create -n [YOUR_ENV_NAME_HERE] -c conda-forge cmor
