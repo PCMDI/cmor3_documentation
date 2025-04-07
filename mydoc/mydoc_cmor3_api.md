@@ -580,14 +580,17 @@ Python: set_quantize(var_id, quantize_mode, quantize_nsd)
   * **quantize_mode** = Quantization mode.  Can be set to the following values.
     - 0: No quantization mode
     - 1: BitGroom
-    - 2: Granular BitRound
+        - Determines the number of bits which are necessary for the required number of significant decimal digits, and then sets excess bits to zero or one for alternate array values.
+    - 2: Granular BitRound **(recommended)**
+        - Determines the number of required bits for each value in the array, and uses IEEE rounding to change the data value. It is recommended to use this mode as it produces a better overall compression ratio.
     - 3: BitRound
+        - Allows directly specifying the number of significant bits, and then sets excess bits to zero or one for alternate array values.
 
-  * **quantize_nsd** = Number of significant digits.  If quantize_mode is set to
-                    1 or 2, then the value can be set from 1 to 7 for floats
-                    and 1 to 23 for doubles. If quantize_mode is set to 3, then
-                    the value can be set from 1 to 15 for floats and 1 to 52
-                    for doubles.  The value is ignore if quantize_mode is 0.
+  * **quantize_nsd** = Number of significant digits or bits. Its use is dependent on the quantization mode used.
+    - 0 (No quantization mode): The value is ignored.
+    - 1 (BitGroom) or 2 (Granular BitRound): The value can be set from 1 to 7 digits for floats or 1 to 23 digits for doubles.
+    - 3 (BitRound): The value can be set from 1 to 15 bits for floats or 1 to 52 bits
+                    for doubles.
 
 Returns upon success:
 
