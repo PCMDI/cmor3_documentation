@@ -13,3 +13,6 @@ The complete rewrite of CMOR, along with the new capabilities added to version 2
 
 Enhancements to CMOR with capabilities added for version 3 were implemented by Denis Nadeau with help from Charles Doutriaux.  We thanks Paul Durack and Martin Juckes who provided inputs, enhancement and solutions to improve flexibility.  We also thank the "early" users of CMOR3 for their patience and for helping use improving CMOR3.  
 
+The code of CMOR is released under the BSD 3-Clause License. For more details, see the [LICENSE](https://github.com/PCMDI/cmor/blob/main/LICENSE){:target="_blank"} File.
+
+LLNL-CODE-2005936
