@@ -309,7 +309,7 @@ Python: set_grid_mapping(grid_id, mapping_name, parameter_names, parameter_value
 
   * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
 
-  * **mapping_name** = name of the mapping (see CF conventions). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
 
   * **nparameters** = number of parameters set.
 
@@ -322,6 +322,63 @@ Python: set_grid_mapping(grid_id, mapping_name, parameter_names, parameter_value
   * **parameter_units** = array (list for Python) of string containing the units of the parameters to set. In C parameter_units is declared of length [nparameters][lunits]. In Python it is optional if parameter_names is a dictionary containing the value and units.
 
   * **lunits** = length of each elements of the units string array (e.g., if parameters_units is declared [5][24], you would pass 24 because each elements has 24 characters).
+
+Returns upon success:
+
+* Fortran: 0
+{:.green}
+* C: 0
+{:.blue} 
+* Python: None
+{:.coral} 
+
+
+---
+
+### cmor_set_crs()
+
+Fortran: error_flag = cmor_set_crs(grid_id, mapping_name, parameter_names, parameter_values, parameter_units, text_parameter_names, text_parameter_values)
+{:.green}
+
+C: error_flag = cmor_set_crs(int grid_id, char *mapping_name, int nparameters, char **parameter_names, int lparameters, double parameter_values[], char **parameter_units, int lunits, int ntextparameters, char **text_parameter_names, int ltextparameters, char *text_parameter_values, int text_parameter_length[]) 
+{:.blue} 
+
+Python: set_crs(grid_id, mapping_name, parameter_names, parameter_values=None, parameter_units=None) 
+{:.coral} 
+
+
+*Description*: Define the Coordinate Reference System (CRS) variable that contains grid mapping parameters associated with a grid (see CF conventions for more info on which parameters to set). Similar to [cmor_set_grid_mapping](#cmor_set_grid_mapping), but allows for the setting of text-based parameters.
+
+*Note on `crs_wkt`*: This function allows for the setting of a [`crs_wkt`](https://cfconventions.org/cf-conventions/cf-conventions.html#use-of-the-crs-well-known-text-format){:target="_blank"} text attribute, meant to hold a Well-known Text (WKT) formatted string. However, CMOR will not validate the contents of this string.
+
+
+*Arguments*:
+
+  * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
+
+  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+
+  * **nparameters** = number of parameters set.
+
+  * **parameter_names** = array (list for Python) of strings containing the names of the parameters to set. In the case of “standard_parallel”, CF allows either 1 or 2 parallels to be specified (i.e. the attribute standard_parallel may be an array of length 2). In the case of 2 parallels, CMOR requires the user to specify these as separate parameters, named standard_parallel_1 and standard_parallel_2, but then the two parameters will be stored in an array, consistent with CF. In the case of a single parallel, the name standard_parallel should be specified. In the C version of this function, parameter_names is declared of length [nparameters][lparameters], where lparameters in the length of each string array element (see below). In Python, parameter_names can be defined as a dictionary containing the keys that represent the parameter_names. The value associated with each key can be either a list [float, str] (or [str, float]) representing the value/units of each parameter, or another dictionary containing the keys “value” and “units”. If these conditions are fulfilled, then parameter_units and parameter_values are optional and would be ignored if passed.
+
+  * **lparameters** = length of each element of the parameter_names string array. If, for example, parameter_names includes 5 parameters, each 24 characters long (i.e., it is declared [5][24]), you would pass lparameters=24.
+
+  * **parameter_values** = array containing the values associated with each parameter. In Python, parameter_values is ignored if parameter_names is a dictionary containing the values and units.
+
+  * **parameter_units** = array (list for Python) of string containing the units of the parameters to set. In C parameter_units is declared of length [nparameters][lunits]. In Python, parameter_units is ignored if parameter_names is a dictionary containing the value and units.
+
+  * **lunits** = length of each elements of the units string array (e.g., if parameters_units is declared [5][24], you would pass 24 because each elements has 24 characters).
+
+  * **ntextparameters** = number of text parameters set.
+
+  * **text_parameter_names** = array (list for Python) of strings containing the names of the text parameters to set. In the C version of this function, text_parameter_names is declared of length [ntextparameters][ltextparameters], where ltextparameters is the length of each string array element (see below). In Python, parameter_names can be defined as a dictionary containing the keys that represent the text parameter names. The value associated with each key can be a string value of each text parameter.
+
+  * **ltextparameters** = length of each element of the text_parameter_names string array. If, for example, text_parameter_names includes 5 parameters, each 24 characters long (i.e., it is declared [5][24]), you would pass ltextparameters=24.
+
+  * **text_parameter_values** = array containing the string values associated with each text parameter.  In the C version of this function, this array will contain null-terminated strings that are concatenated end-to-end in the same order as their names in text_parameter_names and their lengths in text_parameter_length. In Python, parameter_values is ignored if parameter_names is a dictionary containing the text values.
+
+  * **text_parameter_length** = array containing the length of each string value in text_parameter_values.
 
 Returns upon success:
 
