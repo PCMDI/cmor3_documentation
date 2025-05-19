@@ -309,7 +309,7 @@ Python: set_grid_mapping(grid_id, mapping_name, parameter_names, parameter_value
 
   * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
 
-  * **mapping_name** = name of the mapping (see CF conventions). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
 
   * **nparameters** = number of parameters set.
 
@@ -356,7 +356,7 @@ Python: set_crs(grid_id, mapping_name, parameter_names, parameter_values=None, p
 
   * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
 
-  * **mapping_name** = name of the mapping (see CF conventions). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
 
   * **nparameters** = number of parameters set.
 
