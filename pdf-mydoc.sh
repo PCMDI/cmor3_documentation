@@ -10,3 +10,6 @@ echo "Building the PDF ...";
 prince --javascript --input-list=_site/doc_pdf/pdfconfigs/prince-list.txt -o pdf/mydoc.pdf;
 echo "done";
 
+echo 'Kill Jekyll instance'
+kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
+clear
