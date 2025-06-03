@@ -309,7 +309,23 @@ Python: set_grid_mapping(grid_id, mapping_name, parameter_names, parameter_value
 
   * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
 
-  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+  * **mapping_name** = name of the mapping (see [CF conventions](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.  Below is the list of valid grid mapping names.
+    - [albers_conical_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_albers_equal_area){:target="_blank"}
+    - [azimuthal_equidistant](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#azimuthal-equidistant){:target="_blank"}
+    - [geostationary](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_geostationary_projection){:target="_blank"}
+    - [lambert_azimuthal_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#lambert-azimuthal-equal-area){:target="_blank"}
+    - [lambert_conformal_conic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_lambert_conformal){:target="_blank"}
+    - [lambert_cylindrical_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_lambert_cylindrical_equal_area){:target="_blank"}
+    - [latitude_longitude](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_latitude_longitude){:target="_blank"}
+    - [mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_mercator){:target="_blank"}
+    - [oblique_mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_oblique_mercator){:target="_blank"}
+    - [orthographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_orthographic){:target="_blank"}
+    - [polar_stereographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#polar-stereographic){:target="_blank"}
+    - [rotated_latitude_longitude](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_rotated_pole){:target="_blank"}
+    - [sinusoidal](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_sinusoidal){:target="_blank"}
+    - [stereographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_stereographic){:target="_blank"}
+    - [transverse_mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_transverse_mercator){:target="_blank"}
+    - [vertical_perspective](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#vertical-perspective){:target="_blank"}
 
   * **nparameters** = number of parameters set.
 
@@ -356,7 +372,23 @@ Python: set_crs(grid_id, mapping_name, parameter_names, parameter_values=None, p
 
   * **grid_id** = the “handle” returned by a previous call to cmor_grid, indicating which grid the mapping parameters should be associated with.
 
-  * **mapping_name** = name of the mapping (see [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.
+  * **mapping_name** = name of the mapping (see [CF conventions](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#appendix-grid-mappings){:target="_blank"} for a list of grid mapping names). This name dictates which parameters should be set and for some parameters restricts their possible values or range. New mapping names can be added via MIP tables.  Below is the list of valid grid mapping names.
+    - [albers_conical_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_albers_equal_area){:target="_blank"}
+    - [azimuthal_equidistant](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#azimuthal-equidistant){:target="_blank"}
+    - [geostationary](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_geostationary_projection){:target="_blank"}
+    - [lambert_azimuthal_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#lambert-azimuthal-equal-area){:target="_blank"}
+    - [lambert_conformal_conic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_lambert_conformal){:target="_blank"}
+    - [lambert_cylindrical_equal_area](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_lambert_cylindrical_equal_area){:target="_blank"}
+    - [latitude_longitude](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_latitude_longitude){:target="_blank"}
+    - [mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_mercator){:target="_blank"}
+    - [oblique_mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_oblique_mercator){:target="_blank"}
+    - [orthographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_orthographic){:target="_blank"}
+    - [polar_stereographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#polar-stereographic){:target="_blank"}
+    - [rotated_latitude_longitude](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_rotated_pole){:target="_blank"}
+    - [sinusoidal](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_sinusoidal){:target="_blank"}
+    - [stereographic](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_stereographic){:target="_blank"}
+    - [transverse_mercator](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#_transverse_mercator){:target="_blank"}
+    - [vertical_perspective](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html#vertical-perspective){:target="_blank"}
 
   * **nparameters** = number of parameters set.
 
