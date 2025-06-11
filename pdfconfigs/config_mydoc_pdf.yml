@@ -6,7 +6,7 @@ output: pdf
 product: mydoc
 print: true
 print_title: CMOR 
-print_subtitle: version 3.10
+print_subtitle: version 3.11
 output: pdf
 defaults:
   -
