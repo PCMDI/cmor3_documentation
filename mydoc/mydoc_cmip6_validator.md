@@ -1,5 +1,5 @@
 ---
-title: PrePARE
+title: PrePARE (deprecated)
 tags: [cmip6]
 keywords: cmip6, table, validator, PrePARE
 sidebar: mydoc_sidebar
@@ -8,9 +8,11 @@ permalink: /mydoc_cmip6_validator/
 
 ### Note
 
+**PrePARE is a legacy application that is no longer supported as of CMOR 3.12 and will be removed in a future release.**
+
 In order to use PrePARE please follow these instructions.
 
- * [Anaconda installation](https://cmor.llnl.gov/mydoc_cmor3_conda/)
+ * [miniforge/mamba installation](https://cmor.llnl.gov/mydoc_cmor3_conda/)
 
 PrePARE has been created to validate CMIP6 data before publishing files to ESGF.  It may not work properly on CMIP5 files.
 
