@@ -18,7 +18,7 @@ permalink: /mydoc_cmor3_github/
 
 ### Installing Miniforge
 
-  * **CMOR 3.11.0 has support for Python 3.9, 3.10, 3.11, 3.12, and 3.13.**
+  * **CMOR 3.12.0 has support for Python 3.10, 3.11, 3.12, and 3.13.**
 
   * Download the [Miniforge installer](https://conda-forge.org/download/){:target="_blank"} for your system.
     * CMOR is currently only supported for Linux and macOS x86_64, and macOS arm64 (Apple Silicon)
