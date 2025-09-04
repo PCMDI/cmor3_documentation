@@ -43,30 +43,27 @@ permalink: /mydoc_cmor3_CV/
 
 ```json
 "required_global_attributes": [
-    "variant_label",
-    "activity_id",
-    "branch_method",
     "Conventions",
+    "activity_id",
     "creation_date",
-    "mip_era",
     "data_specs_version",
-    "experiment_id",
     "experiment",
+    "experiment_id",
     "forcing_index",
-    "further_info_url",
     "frequency",
+    "further_info_url",
     "grid",
     "grid_label",
-    "native_resolution",
     "initialization_index",
     "institution",
     "institution_id",
     "license",
+    "mip_era",
+    "nominal_resolution",
     "physics_index",
     "product",
     "realization_index",
     "realm",
-    "variant_label",
     "source",
     "source_id",
     "source_type",
@@ -74,7 +71,8 @@ permalink: /mydoc_cmor3_CV/
     "sub_experiment_id",
     "table_id",
     "tracking_id",
-    "variable_id"
+    "variable_id",
+    "variant_label"
 ],
 ```
 </details>
