@@ -88,15 +88,13 @@ permalink: /mydoc_cmor3_CV/
     "parent_experiment_id"
 ],
 
-"variant_label": [ "^r[[:digit:]]\\{1,\\}i[[:digit:]]\\{1,\\}p[[:digit:]]\\{1,\\}f[[:digit:]]\\{1,\\}$" ],
+"variant_label": [ "r[[:digit:]]\\{1,\\}i[[:digit:]]\\{1,\\}p[[:digit:]]\\{1,\\}f[[:digit:]]\\{1,\\}$" ],
 
-"sub_experiment_id": [ "^s[[:digit:]]\\{4,4\\}$", "none" ],
-
-"product": [ "output" ] ,
+"product": [ "model-output" ] ,
 
 "mip_era": [ "CMIP6" ],
 
-"further_info_url": [ "http://furtherinfo.es-doc.org/[[:alpha:]]\\{1,\\}" ],
+"further_info_url": [ "https://furtherinfo.es-doc.org/.*" ],
 ```
 </details>
 
@@ -105,6 +103,12 @@ permalink: /mydoc_cmor3_CV/
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
 ```json
+"sub_experiment_id":{
+    "none":"none",
+    "s1910":"initialized near end of year 1910",
+    "s1920":"initialized near end of year 1920",
+    "s1950":"initialized near end of year 1950"
+}
 "realm":{
     "aerosol":"Aerosol",
     "atmos":"Atmosphere",
