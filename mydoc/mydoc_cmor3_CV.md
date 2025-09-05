@@ -6,9 +6,23 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_CV/
 ---
 
-### CMIP6 Controlled vocabulary minimum requirements. 
+### CMIP7 Controlled Vocabulary (CV) in development. 
 
-   * CMOR 3 required a new Controlled Vocabulary file which must contains 5 mandatory keys for CMIP6.
+Work is currently ongoing to develop and document CMIP7 CVs. To see progress, see the following links
+
+    * [CMIP7 Guidance Pages (Overview guidance pages for the CMIP7 project)](https://wcrp-cmip.github.io/cmip7-guidance/)
+    * [WCRP Universe (master collection of cross-project MIP relevant content)](https://github.com/WCRP-CMIP/WCRP-universe)
+    * [CMIP7-CVs (Controlled Vocabularies for CMIP7)](https://github.com/WCRP-CMIP/CMIP7-CVs)
+    * [Variable Registry (Registry of all MIP-relevant variables, for use across MIP projects)](https://github.com/WCRP-CMIP/Variable-Registry)
+    * [CMIP7 Essential Model Documentation](https://github.com/WCRP-CMIP/Essential-Model-Documentation)
+
+
+### CMIP6 Controlled Vocabulary (CV) minimum requirements. 
+
+While the CMIP6 project is now complete, the templates below are preserved and provide guidance which will look very similar
+to the CMIP7 CVs once they are finalized.
+
+   * CMOR 3 requires a new Controlled Vocabulary file which must contains 5 mandatory keys for CMIP6.
        * institutions_ids:  A dictionary of of registered institution IDs with a description.
        * source_ids:  A dictionary of registered source IDS (model) with a ```specific``` description.
        * experiment_ids:  A dictionary of experiment_ids (CMIP6) pointing to a dictionary  of ```specific``` metadata.
@@ -32,12 +46,26 @@ permalink: /mydoc_cmor3_CV/
 </details>
 
 ### To register, activities, sources or institutions
-  * Contact: [cmor@listserv.llnl.gov](mailto:cmor@listserv.llnl.gov)
+  * See guidance pages above, both for CMIP7 and CMIP6
 
+
+### CMIP6 Controlled Vocabularies
+
+The [CMIP6 Controlled Vocabularies (CVs)](https://github.com/WCRP-CMIP/CMIP6_CVs) are a collection of registered values, either defined by the project,
+or registered by contributors to define their data contributions.
+
+Some examples of project defined content are [`CMIP6_DRS (Data Reference Syntax)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_DRS.json),
+[`CMIP6_activity_id (CMIP6 registered MIPs)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_activity_id.json),
+[`CMIP6_experiment_id (CMIP6 experiments sponsored by a MIP)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_experiment_id.json), etc.
+
+Examples of contributor defined content are [`CMIP6_institution_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_institution_id.json),
+[`CMIP6_source_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_source_id.json)
+
+Below are some expanded examples of registered content.
 
 ### CMIP6 required global attributes
 
-* [CMIP6_CV.json](https://github.com/PCMDI/cmor/blob/main/TestTables/CMIP6_CV.json)
+* [CMIP6_CV.json:required_global_attributes](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3-L34)
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
@@ -140,7 +168,9 @@ permalink: /mydoc_cmor3_CV/
 ```
 </details>
 
-### Registered activities 
+### Registered activities
+
+* [CMIP6_CV.json:activity_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L48-L73)
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
