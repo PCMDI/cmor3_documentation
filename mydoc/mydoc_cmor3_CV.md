@@ -10,11 +10,11 @@ permalink: /mydoc_cmor3_CV/
 
 Work is currently ongoing to develop and document CMIP7 CVs. To see progress, see the following links
 
-    * [CMIP7 Guidance Pages (Overview guidance pages for the CMIP7 project)](https://wcrp-cmip.github.io/cmip7-guidance/)
-    * [WCRP Universe (master collection of cross-project MIP relevant content)](https://github.com/WCRP-CMIP/WCRP-universe)
-    * [CMIP7-CVs (Controlled Vocabularies for CMIP7)](https://github.com/WCRP-CMIP/CMIP7-CVs)
-    * [Variable Registry (Registry of all MIP-relevant variables, for use across MIP projects)](https://github.com/WCRP-CMIP/Variable-Registry)
-    * [CMIP7 Essential Model Documentation](https://github.com/WCRP-CMIP/Essential-Model-Documentation)
+* [CMIP7 Guidance Pages (Overview guidance pages for the CMIP7 project)](https://wcrp-cmip.github.io/cmip7-guidance/){:target="_blank"}
+* [WCRP Universe (master collection of cross-project MIP relevant content)](https://github.com/WCRP-CMIP/WCRP-universe){:target="_blank"}
+* [CMIP7-CVs (Controlled Vocabularies for CMIP7)](https://github.com/WCRP-CMIP/CMIP7-CVs){:target="_blank"}
+* [Variable Registry (Registry of all MIP-relevant variables, for use across MIP projects)](https://github.com/WCRP-CMIP/Variable-Registry){:target="_blank"}
+* [CMIP7 Essential Model Documentation](https://github.com/WCRP-CMIP/Essential-Model-Documentation){:target="_blank"}
 
 
 ### CMIP6 Controlled Vocabulary (CV) minimum requirements. 
@@ -51,21 +51,21 @@ to the CMIP7 CVs once they are finalized.
 
 ### CMIP6 Controlled Vocabularies
 
-The [CMIP6 Controlled Vocabularies (CVs)](https://github.com/WCRP-CMIP/CMIP6_CVs) are a collection of registered values, either defined by the project,
+The [CMIP6 Controlled Vocabularies (CVs)](https://github.com/WCRP-CMIP/CMIP6_CVs){:target="_blank"} are a collection of registered values, either defined by the project,
 or registered by contributors to define their data contributions.
 
-Some examples of project defined content are [`CMIP6_DRS (Data Reference Syntax)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_DRS.json),
-[`CMIP6_activity_id (CMIP6 registered MIPs)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_activity_id.json),
-[`CMIP6_experiment_id (CMIP6 experiments sponsored by a MIP)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_experiment_id.json), etc.
+Some examples of project defined content are [`CMIP6_DRS (Data Reference Syntax)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_DRS.json){:target="_blank"},
+[`CMIP6_activity_id (CMIP6 registered MIPs)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_activity_id.json){:target="_blank"},
+[`CMIP6_experiment_id (CMIP6 experiments sponsored by a MIP)`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_experiment_id.json){:target="_blank"}, etc.
 
-Examples of contributor defined content are [`CMIP6_institution_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_institution_id.json),
-[`CMIP6_source_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_source_id.json)
+Examples of contributor defined content are [`CMIP6_institution_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_institution_id.json){:target="_blank"},
+[`CMIP6_source_id`](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_source_id.json){:target="_blank"}
 
 Below are some expanded examples of registered content.
 
 ### CMIP6 required global attributes
 
-* [CMIP6_CV.json:required_global_attributes](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3-L34)
+* [CMIP6_CV.json:required_global_attributes](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3-L34){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
@@ -170,7 +170,7 @@ Below are some expanded examples of registered content.
 
 ### Registered activities
 
-* [CMIP6_CV.json:activity_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L48-L73)
+* [CMIP6_CV.json:activity_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L48-L73){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
@@ -204,6 +204,8 @@ Below are some expanded examples of registered content.
 </details>
 
 ### Registered sources
+
+* [CMIP6_CV.json:source_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L125-L3465){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
@@ -243,10 +245,12 @@ Below are some expanded examples of registered content.
 
 ### Registered institutions
 
+* [CMIP6_CV.json:institution_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L74-L124){:target="_blank"}
+
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
 ```json
-"institution_ids": {
+"institution_id": {
     "NSF-DOE-NCAR":"NSF/DOE NCAR (National Center for Atmospheric Research) Boulder, CO, USA"
     ...
 },
@@ -256,10 +260,12 @@ Below are some expanded examples of registered content.
 
 ### Valid grids
 
+* [CMIP6_CV.json:grid_label](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3496-L3542){:target="_blank"}
+
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
 ```json
-"grid_labels": {
+"grid_label": {
     "gm":"global mean data",
     "gn":"data reported on a model's native grid",
     "gna":"data reported on a native grid in the region of Antarctica",
@@ -272,6 +278,8 @@ Below are some expanded examples of registered content.
 </details>
 
 ### Grid resolutions
+
+* [CMIP6_CV.json:nominal_resolution](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3543-L3559){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
@@ -298,6 +306,8 @@ Below are some expanded examples of registered content.
 </details>
 
 ### Registered experiments
+
+* [CMIP6_CV.json:experiment_id](https://github.com/PCMDI/cmip6-cmor-tables/blob/087fe45d21c082e28723e0f930e4266abe91b853/Tables/CMIP6_CV.json#L3702-L11535){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand example JSON section</b></summary>
 
