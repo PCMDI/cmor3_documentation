@@ -23,10 +23,10 @@ While the CMIP6 project is now complete, the templates below are preserved and p
 to the CMIP7 CVs once they are finalized.
 
    * CMOR 3 requires a new Controlled Vocabulary file which must contains 5 mandatory keys for CMIP6.
-       * institutions_ids:  A dictionary of of registered institution IDs with a description.
-       * source_ids:  A dictionary of registered source IDS (model) with a ```specific``` description.
-       * experiment_ids:  A dictionary of experiment_ids (CMIP6) pointing to a dictionary  of ```specific``` metadata.
-       * grid_labels:  An array or dictionary of grid labels (gr, gn, ...).
+       * institutions_id:  A dictionary of of registered institution IDs with a description.
+       * source_id:  A dictionary of registered source IDS (model) with a ```specific``` description.
+       * experiment_id:  A dictionary of experiment IDs (CMIP6) pointing to a dictionary  of ```specific``` metadata.
+       * grid_label:  An array or dictionary of grid labels (gr, gn, ...).
        * nominal_resolution: An array or dictionary of grid resolutions ("0.5 km", "1 km", "10 km", ...).
 
 
@@ -35,10 +35,10 @@ to the CMIP7 CVs once they are finalized.
 ```json
 {
 "CV": {
-    "institution_ids": { "BNU":"GCESS, BNU, Beijing, China" },
-    "source_ids": { "CESM1-CAM5": "CESM1 (CAM5): model version ca. 2009" },
-    "experiment_ids": { "piControl": { } },
-    "grid_labels": { "gn": "data reported on a model's native grid" },
+    "institution_id": { "BNU":"GCESS, BNU, Beijing, China" },
+    "source_id": { "CESM1-CAM5": "CESM1 (CAM5): model version ca. 2009" },
+    "experiment_id": { "piControl": { } },
+    "grid_label": { "gn": "data reported on a model's native grid" },
     "nominal_resolution": [ "0.5 km" ]
    }
 }
