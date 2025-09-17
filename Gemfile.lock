@@ -65,7 +65,7 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
-    rexml (3.3.9)
+    rexml (3.4.2)
     rouge (4.4.0)
     safe_yaml (1.0.5)
     sass-embedded (1.79.3-x86_64-darwin)
@@ -88,7 +88,7 @@ DEPENDENCIES
   kramdown (>= 2.4.0)
   kramdown-parser-gfm
   liquid (>= 4.0.4)
-  nokogiri (>= 1.18.8)
+  nokogiri (>= 1.18.9)
   redcarpet (>= 3.6.0)
 
 BUNDLED WITH
