@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="{{ "/css/lavish-bootstrap.css" | prepend: site.baseurl }}">
 <link rel="stylesheet" href="{{ "/css/customstyles.css" | prepend: site.baseurl }}">
 <link rel="stylesheet" href="{{ "/css/theme-blue.css" | prepend: site.baseurl }}">
+{% if site.us_gov_site %}
 <link rel="stylesheet" href="{{ '/uswds-assets/css/uswds.min.css' | relative_url }}">
+{% endif %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>

@@ -70,8 +70,9 @@
 
     <script src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOE&amp;subagency=LLNL&amp;sdor=fda.gov&amp;dclink=true" language="javascript" id="_fed_an_ua_tag"></script>
 
+    {% if site.us_gov_site %}
     <script src="{{ '/uswds-assets/js/uswds-init.min.js' | relative_url }}"></script>
-
+    {% endif %}
 </head>
 <body>
 {% include topnav.html %}
@@ -98,7 +99,9 @@
                 .annotator('setupPlugins', {tokenUrl: 'http://example.com/api/token'})
     });
     </script>
+    {% if site.us_gov_site %}
     <script src="{{ '/uswds-assets/js/uswds.min.js' | relative_url }}"></script>
+    {% endif %}
 </body>
 {% if site.google_analytics %}
 {% include google_analytics.html %}
