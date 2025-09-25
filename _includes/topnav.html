@@ -1,6 +1,9 @@
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container topnavlinks">
+        {% if site.us_gov_site %}
+            {% include usa_banner.html %}
+        {% endif %}
         {% include maintenance_banner.html %}
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
