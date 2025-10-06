@@ -6,6 +6,31 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_cmip6_user_input/
 ---
 
+### Overview
+
+User input is used by CMOR to set the global attributes in netCDF files, and to set other parameters that control CMOR's behavior. They are passed to CMOR in a JSON file using the [``cmor_dataset_json``](/mydoc_cmor3_api/#cmor_dataset_json).
+
+```python
+import cmor
+
+cmor.setup(
+    inpath='Tables',
+    netcdf_file_action=cmor.CMOR_REPLACE_4
+)
+
+cmor.dataset_json("Test/CMOR_input_example.json")  
+```
+
+### Controlled Vocabulary Attributes
+
+Attributes are entries used by CMOR to set global attributes in netCDF files. The values of these attributes must be valid according to the controlled vocabulary.
+
+```json
+    "source_id":              "ACCESS-CM2",
+    "experiment_id":          "1pctCO2",
+    "activity_id":            "AerChemMIP",
+```
+
 ### CMOR parameters
 
 CMOR parameters are entries used by CMOR for setting paths to table files, directory and file templates, and other settings.
@@ -13,23 +38,25 @@ CMOR parameters are entries used by CMOR for setting paths to table files, direc
 #### Controlled Vocabulary and Varialbe Table Paths
 
 * **_controlled_vocabulary_file**: Specify Controlled Vocabulary file name -- default: CMIP6_CV.json
-* **_AXIS_ENTRY_FILE**:        Specify Coordinate table file(axes) -- default: CMIP6_coordinate.json
-* **_FORMULA_VAR_FILE**:       Speciry Formula terms table file -- defalut: CMIP6_formula_terms.json
+* **_AXIS_ENTRY_FILE**: Specify Coordinate table file(axes) -- default: CMIP6_coordinate.json
+* **_FORMULA_VAR_FILE**: Speciry Formula terms table file -- defalut: CMIP6_formula_terms.json
 
 #### String-Valued Index Attributes
 
-* **_use_strings_for_indexes**:Used to allow string values rather than integers for the attributes `realization_index`, `initialization_index`, `physics_index`, and `forcing_index`.
+* **_use_strings_for_indexes**: Used to allow string values rather than integers for the attributes `realization_index`, `initialization_index`, `physics_index`, and `forcing_index`.
 
 #### CMIP-Specific Checks
 
-* **_cmip6_option**:           Used to trigger validation for CMIP6 only.
-* **_cmip7_option**:           Used to trigger validation for CMIP7 only.
+* **_cmip6_option**: Enables the validation of attributes for CMIP6, which includes checks related to source and experiment IDs, grid resolution, parent attributes, and subexperiments.
+* **_cmip7_option**: Enables the validation of attributes for CMIP7, which are similar to the CMIP6 checks but without the subexperiments. This will also allow for the use of string for index attributes just like `_use_strings_for_indexes`.
 
 #### Output Directory and Filename Templates
 
-* **output_path_template**:    "\<mip_era\>\<activity_id\>\<institution_id\>\<source_id\>\<experiment_id\>\<member_id\>\<table\>\<variable_id\>\<grid_label\>\<version\>",
+Templates are strings composed of attribute names within `<>` that are filled out by their corresponding attribute values of the current dataset used by CMOR.
 
-* **output_file_template**:    "\<variable_id\>\<table\>\<source_id\>\<experiment_id\>\<member_id\>\<grid_label\>",
+* **output_path_template**: Template of the output directory for netCDF files. -- default: `<mip_era><activity_id><institution_id><source_id><experiment_id><member_id><table><variable_id><grid_label><version>`
+
+* **output_file_template**: Template of the names of netCDF files. -- default`<variable_id><table><source_id><experiment_id><member_id><grid_label>`
 
 #### Dataset Version
 
@@ -40,6 +67,7 @@ CMOR parameters are entries used by CMOR for setting paths to table files, direc
 Internal attributes are entries with keys that begin with a **_** character that will be added to a CMOR variable's attribute list but will not be written to the netCDF file as global attributes. These can be used for setting values in directory or filename templates.
 
 ```json
+    "_dev_directory":                  "debug",
 ```
 
 ### Comments
