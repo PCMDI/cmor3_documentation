@@ -426,7 +426,7 @@ Returns upon success:
 
 ### cmor_time_varying_grid_coordinate()
 
-**DEPRECATED**: `cmor_time_varying_grid_coordinate` is no longer supported as of CMOR 3.11 and will be removed in a future release.
+**DEPRECATED**: `cmor_time_varying_grid_coordinate` is no longer supported as of CMOR 3.11 and has been removed as of CMOR 3.12.
 
 Fortran: coord_var_id = cmor_time_varying_grid_coordinate(grid_id, table_entry, units, missing_value)
 {:.green}
