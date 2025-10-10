@@ -25,7 +25,7 @@ authors:
   orcid: "https://orcid.org/0000-0003-2835-1438"
   affiliation: "Program for Climate Model Diagnosis and Intercomparison (PCMDI)"
 title: "CMOR v3.0 Users Guide (Climate Model Output Rewriter; CMOR3)"
-version: 3.12.0
+version: 3.13.0
 doi: 10.5281/zenodo.179384 
-date-released: 2025-09-03
+date-released: 2025-10-10
 url: "https://github.com/PCMDI/cmor3_documentation"
