@@ -18,7 +18,7 @@ permalink: /mydoc_cmor3_github/
 
 ### Installing Miniforge
 
-  * **CMOR 3.12.0 has support for Python 3.10, 3.11, 3.12, and 3.13.**
+  * **CMOR 3.13.0 has support for Python 3.10, 3.11, 3.12, 3.13, and 3.14.**
 
   * Download the [Miniforge installer](https://conda-forge.org/download/){:target="_blank"} for your system.
     * CMOR is currently only supported for Linux and macOS x86_64, and macOS arm64 (Apple Silicon)
@@ -38,17 +38,20 @@ permalink: /mydoc_cmor3_github/
     export CONDA_COMPILERS="gcc_linux-64 gfortran_linux-64"
     ```
 
-    For Mac
+    For Intel Mac
     ```bash
     export CONDA_COMPILERS="clang_osx-64 gfortran_osx-64"
     ```
 
-  * Run the following command to build CMOR for your version of Python
+    For Apple Silicon Mac
+    ```bash
+    export CONDA_COMPILERS="clang_osx-arm64 gfortran_osx-arm64"
+    ```
 
-    Python 3.11
+  * Run the following command to create the mamba environment for building CMOR
 
     ```bash
-    mamba create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python=3.11 $CONDA_COMPILERS
+    mamba create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python $CONDA_COMPILERS
     ```
 
   * Activate the mamba environment
