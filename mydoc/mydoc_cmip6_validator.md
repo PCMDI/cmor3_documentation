@@ -8,7 +8,7 @@ permalink: /mydoc_cmip6_validator/
 
 ### Note
 
-**PrePARE is a legacy application that is no longer supported as of CMOR 3.12 and will be removed in a future release.**
+**PrePARE is a legacy application that is no longer supported as of CMOR 3.12 and has been removed as of CMOR 3.13**
 
 In order to use PrePARE please follow these instructions.
 
