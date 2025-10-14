@@ -89,7 +89,7 @@ entries:
       url: /mydoc_cmip6_global_attributes/
       output: web, pdf
 
-    - title: CMIP6 User Input
+    - title: User Input
       url: /mydoc_cmip6_user_input/
       output: web, pdf
 
