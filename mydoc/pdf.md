@@ -10,6 +10,6 @@ permalink: /pdf/
 
 ### PDF documentation
 
-<a target="_blank" class="noCrossRef" href="/pdf/mydoc.pdf"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
+<a target="_blank" class="noCrossRef" href="{{ "/pdf/mydoc.pdf" | prepend: site.baseurl }}"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
 
 
