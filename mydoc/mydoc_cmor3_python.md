@@ -74,7 +74,7 @@ cmor.close()
 
 ### Example 2: Usual Treatment of a 2-D Field
 
-* [example2.py](/mydoc/examples/example2.py)
+* [example2.py]({{site.baseurl}}/mydoc/examples/example2.py)
 
 <details><summary markdown="span"><b>click to expand Python code</b></summary>
 
@@ -267,7 +267,7 @@ data:
 
 ### Example 3: Usual Treatment of a 3-D Field on Pressure Levels
 
-* [example3.py](/mydoc/examples/example3.py)
+* [example3.py]({{site.baseurl}}/mydoc/examples/example3.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b></summary>
 
@@ -573,7 +573,7 @@ data:
 
 ### Example 4: Treatment of a Scalar Dimension (near-surface air temperature)
 
-* [example4.py](/mydoc/examples/example4.py)
+* [example4.py]({{site.baseurl}}/mydoc/examples/example4.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b></summary>
 
@@ -765,7 +765,7 @@ data:
 
 ### Example 5: Treatment of Auxiliary Coordinates (northward ocean heat transport; a function of latitude, ocean basin, month)
 
-* [example5.py](/mydoc/examples/example5.py)
+* [example5.py]({{site.baseurl}}/mydoc/examples/example5.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b></summary>
 
@@ -949,7 +949,7 @@ data:
 
 ### Example 6: Treatment of a 3-D Field on Model Levels (cloud fraction; a function of longitude, latitude, model level, month)
 
-* [example6.py](/mydoc/examples/example6.py)
+* [example6.py]({{site.baseurl}}/mydoc/examples/example6.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b></summary>
 
@@ -1309,7 +1309,7 @@ data:
 
 ### Example 7: Treatment of Grid Coordinates
 
-* [example7.py](/mydoc/examples/example7.py)
+* [example7.py]({{site.baseurl}}/mydoc/examples/example7.py)
 
 <details><summary markdown="span"><b>Click to expand Python code</b></summary>
 
