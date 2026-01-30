@@ -51,7 +51,7 @@ permalink: /mydoc_cmor3_github/
   * Run the following command to create the mamba environment for building CMOR
 
     ```bash
-    mamba create -n cmor_dev -c conda-forge six libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python $CONDA_COMPILERS
+    mamba create -n cmor_dev -c conda-forge libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python pyfive $CONDA_COMPILERS
     ```
 
   * Activate the mamba environment
