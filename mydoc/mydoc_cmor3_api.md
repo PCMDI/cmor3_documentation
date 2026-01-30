@@ -696,6 +696,45 @@ Returns upon success:
 
 ---
 
+### cmor_set_chunking()
+
+
+Fortran: error_flag = cmor_set_chunking(var_id, chunking_dims)
+{:.green}
+
+C: error_flag = cmor_set_chunking(int variable_id, int *chunking_dims)
+{:.blue} 
+
+Python: set_chunking(var_id, chunking_dims)
+{:.coral} 
+
+
+*Description:* Define the NetCDF chunking dimensions of the variable specified by the variable_id. The chunking_dims parameter must be an array of positive integers that is the same length as the number of axes for the variable. The values in chunking_dims follow the order of the variable's list of axes.
+
+Any negative values in chunking_dims will make CMOR warn that the value will be replaced with zero.
+
+
+*Arguments*:
+
+  * **variable_id** = the “handle” returned by cmor_variable (when the variable was defined), which will become better described by the attribute defined in this function.
+
+  * **chunking_dims** = an array of chunking dimensions.
+
+
+Returns upon success:
+
+* Fortran: 0
+{:.green}
+
+* C: 0
+{:.blue} 
+
+* Python: 0
+{:.coral} 
+
+
+---
+
 ### cmor_set_variable_attribute()
 
 
