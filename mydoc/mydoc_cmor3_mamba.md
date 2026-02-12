@@ -64,17 +64,17 @@ permalink: /mydoc_cmor3_conda/
 
     Linux:
     ```bash
-    mamba install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64 pyfive
+    mamba install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64 pyfive typing-extensions
     export LDSHARED_FLAGS="-shared -pthread"
     ```
     For Intel Mac:
     ```bash
-    mamba install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64 pyfive
+    mamba install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64 pyfive typing-extensions
     export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
     ```
     For Apple Silicon Mac:
     ```bash
-    mamba install -n CMOR -c conda-forge clang_osx-arm64 gfortran_osx-arm64 pyfive
+    mamba install -n CMOR -c conda-forge clang_osx-arm64 gfortran_osx-arm64 pyfive typing-extensions
     export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
     ```
     Build and run tests
