@@ -51,7 +51,7 @@ permalink: /mydoc_cmor3_github/
   * Run the following command to create the mamba environment for building CMOR
 
     ```bash
-    mamba create -n cmor_dev -c conda-forge libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python pyfive $CONDA_COMPILERS
+    mamba create -n cmor_dev -c conda-forge libuuid json-c udunits2 hdf5 libnetcdf openblas netcdf4 numpy openssl python pyfive hdf5plugin $CONDA_COMPILERS
     ```
 
   * Activate the mamba environment
@@ -96,6 +96,11 @@ permalink: /mydoc_cmor3_github/
     ```
 
 ### Testing the installation
+
+  * Set up HDF5_PLUGIN_PATH environment variable to point the NetCDF library to the zstd filters for zstandard compression.
+    ```
+    export HDF5_PLUGIN_PATH="$(python -c 'import hdf5plugin; print(hdf5plugin.PLUGINS_PATH)')"
+    ```
 
   * Run C, Fortran, and Python tests
     ```bash
