@@ -60,23 +60,24 @@ permalink: /mydoc_cmor3_conda/
     git submodule update
     ```
     
-    Install gcc and gfortran and linking environment variable
+    Install gcc and gfortran compilers, HDF5 plugins, and packages for tests. Set up linking environment variable.
 
     Linux:
     ```bash
-    mamba install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64 pyfive typing-extensions
+    mamba install -n CMOR -c conda-forge gcc_linux-64 gfortran_linux-64 pyfive udunits2 hdf5plugin
     export LDSHARED_FLAGS="-shared -pthread"
     ```
     For Intel Mac:
     ```bash
-    mamba install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64 pyfive typing-extensions
+    mamba install -n CMOR -c conda-forge clang_osx-64 gfortran_osx-64 pyfive udunits2 hdf5plugin
     export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
     ```
     For Apple Silicon Mac:
     ```bash
-    mamba install -n CMOR -c conda-forge clang_osx-arm64 gfortran_osx-arm64 pyfive typing-extensions
+    mamba install -n CMOR -c conda-forge clang_osx-arm64 gfortran_osx-arm64 pyfive udunits2 hdf5plugin
     export LDSHARED_FLAGS=" -bundle -undefined dynamic_lookup"
     ```
+
     Build and run tests
     ```bash
     # Set prefix for configure step.
@@ -87,6 +88,11 @@ permalink: /mydoc_cmor3_conda/
     # ------------------------------------------------
     ./configure --prefix=$PREFIX --with-python --with-uuid=$PREFIX --with-json-c=$PREFIX --with-udunits2=$PREFIX --with-netcdf=$PREFIX  --enable-verbose-test
 
+    # Set up HDF5_PLUGIN_PATH environment variable to point the NetCDF library to the zstd filters
+    # for zstandard compression.
+    # ------------------------------------------------
+    export HDF5_PLUGIN_PATH="$(python -c 'import hdf5plugin; print(hdf5plugin.PLUGINS_PATH)')"
+  
     # Run the tests with the Makefile (without rebuilding CMOR).
     # ------------------------------------------------
     make test -o cmor -o python
