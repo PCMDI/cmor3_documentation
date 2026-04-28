@@ -60,7 +60,16 @@ Templates are strings composed of attribute names within `<>` that are filled ou
 
 #### Dataset Version
 
-* **version**: Set this to name the \<version\> part of the output path template.  If not set, then CMOR will use the current date as the version in the format of "vYYYYMMDD" (ex. "v20220718"),
+* **version**: Set this to name the \<version\> part of the output path template.  If not set, then CMOR will use the current date as the version in the format of "vYYYYMMDD" (ex. "v20220718").
+
+  * Setting the ``version`` attribute will cause it to be added to the global attributes of the netCDF file.
+  * To avoid adding the attribute, set an [internal attribute](#internal-attributes) that can be used as a template value while not being a global attribute.  For example, set the attribute ``_dir_version`` and replace \<version\> with \<dir_version\> in the output path template. 
+    * Do not use ``_version`` as an internal attribute as it is used by CMOR to store the version value derived from the current date.
+
+```json
+    "_dir_version": "output_v4",
+    "output_path_template": "<drs_specs><mip_era><activity_id><institution_id><source_id><experiment_id><variant_label><region><frequency><variable_id><branding_suffix><grid_label><dir_version>",
+```
 
 ### Internal Attributes
 
