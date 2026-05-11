@@ -53,17 +53,17 @@ permalink: /mydoc_cmor3_pip/
     cd cmor
     ```
 
+    * If you already cloned the repository without submodules, run:
+
+      ```bash
+      git submodule update --init
+      ```
+
   * Run the Python test scripts you want from the repository root. For example:
 
     ```bash
     python Test/test_doc.py
     python Test/test_cmor_CMIP7.py
-    ```
-
-  * If you already cloned the repository without submodules, run:
-
-    ```bash
-    git submodule update --init
     ```
 
 ### Notes
