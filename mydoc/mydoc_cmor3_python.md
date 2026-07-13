@@ -1,7 +1,7 @@
 ---
 title: Python Examples
 tags: [examples, python, cmip7]
-keywords: example, python
+keywords: example, python, cmip7
 sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_python/
 ---

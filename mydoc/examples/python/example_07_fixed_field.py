@@ -19,6 +19,8 @@ os.chdir(EXAMPLE_DIR)
 (EXAMPLE_DIR / "output").mkdir(exist_ok=True)
 cmor.setup(inpath=str(TABLES_PATH), netcdf_file_action=cmor.CMOR_REPLACE)
 cmor.dataset_json(str(INPUT_PATH))
+
+# Override 'frequency' from the user input
 cmor.set_cur_dataset_attribute("frequency", "fx")
 cmor.load_table("CMIP7_land.json")
 lat_id = cmor.axis(
