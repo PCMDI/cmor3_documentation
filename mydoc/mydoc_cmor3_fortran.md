@@ -41,7 +41,7 @@ Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_
 
 ### CMOR Input Files
 
-* [CMIP7_input_example.json]({{site.baseurl}}/mydoc/examples/python/CMIP7_input_example.json){:target="_blank"}
+* [CMIP7_input_example.json]({{site.baseurl}}/mydoc/examples/CMIP7_input_example.json){:target="_blank"}
 * [CMIP7_coordinate.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_coordinate.json){:target="_blank"}
 * [CMIP7_formula_terms.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_formula_terms.json){:target="_blank"}
 * [CMIP7_cell_measures.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_cell_measures.json){:target="_blank"}
@@ -51,7 +51,7 @@ Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_
 <details><summary markdown="span"><b>Click to expand shared JSON input</b></summary>
 
 ```json
-{% include_relative examples/python/CMIP7_input_example.json %}
+{% include_relative examples/CMIP7_input_example.json %}
 ```
 
 </details>

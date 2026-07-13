@@ -18,7 +18,7 @@ git clone https://github.com/WCRP-CMIP/cmip7-cmor-tables.git
 ```
 
 The runner expects tables under `./cmip7-cmor-tables/tables` and uses the
-shared CMIP7 user input JSON from `../python/CMIP7_input_example.json`.
+shared CMIP7 user input JSON from `../CMIP7_input_example.json`.
 
 ## Run
 
