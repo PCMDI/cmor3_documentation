@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUN_DIR="${RUN_DIR:-$PWD}"
 TABLES_PATH="${CMOR_TABLES_PATH:-$RUN_DIR/cmip7-cmor-tables/tables}"
-INPUT_PATH="${CMOR_INPUT_PATH:-$SCRIPT_DIR/../python/CMIP7_input_example.json}"
+INPUT_PATH="${CMOR_INPUT_PATH:-$RUN_DIR/CMIP7_input_example.json}"
 OUTPUT_ROOT="$SCRIPT_DIR/output"
 BUILD_DIR="${BUILD_DIR:-$SCRIPT_DIR/build}"
 

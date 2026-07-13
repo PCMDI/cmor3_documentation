@@ -19,7 +19,7 @@ contains
     call get_command_argument(3, output_dir)
 
     if (len_trim(tables_path) == 0) tables_path = "./cmip7-cmor-tables/tables"
-    if (len_trim(input_path) == 0) input_path = "../python/CMIP7_input_example.json"
+    if (len_trim(input_path) == 0) input_path = "./CMIP7_input_example.json"
     if (len_trim(output_dir) == 0) output_dir = "output"
   end subroutine get_example_args
 

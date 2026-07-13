@@ -28,13 +28,14 @@ Install the CMIP7 tables in the working directory where you will run the example
 git clone https://github.com/WCRP-CMIP/cmip7-cmor-tables.git
 ```
 
-Run the examples from a working directory that contains the `cmip7-cmor-tables` repository:
+Run the examples from a working directory that contains the `cmip7-cmor-tables` repository using the [run_examples.sh]({{site.baseurl}}/mydoc/examples/fortran/run_examples.sh){:target="_blank"} script:
 
 ```bash
-/path/to/cmor3_documentation/mydoc/examples/fortran/run_examples.sh
+chmod a+x run_examples.sh
+./run_examples.sh
 ```
 
-Generated NetCDF files are written under `mydoc/examples/fortran/output`. The examples expect tables under `./cmip7-cmor-tables/tables` in the directory where you run the script. To use a different table location, set `CMOR_TABLES_PATH` to the directory containing the CMIP7 table JSON files. To use a different user input file, set `CMOR_INPUT_PATH`.
+The examples expect tables under `./cmip7-cmor-tables/tables` in the directory where you run the script. To use a different table location, set `CMOR_TABLES_PATH` to the directory containing the CMIP7 table JSON files. To use a different user input file, set `CMOR_INPUT_PATH`.
 
 Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_cell_measures.json` and `CMIP7_long_name_overrides.json` before writing data. The fixed-field example overrides `frequency` from the shared user input file to `fx`.
 
