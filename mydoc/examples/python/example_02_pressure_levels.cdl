@@ -1,0 +1,227 @@
+netcdf ta_tavg-p19-hxy-air_mon_glb_g999_ACCESS-ESM1-6_amip_r1i1p1f1_197901-197902 {
+dimensions:
+	time = UNLIMITED ; // (2 currently)
+	plev = 19 ;
+	lat = 3 ;
+	lon = 4 ;
+	bnds = 2 ;
+variables:
+	double time(time) ;
+		time:bounds = "time_bnds" ;
+		time:units = "days since 1979-01-01" ;
+		time:calendar = "360_day" ;
+		time:axis = "T" ;
+		time:long_name = "Time Intervals" ;
+		time:standard_name = "time" ;
+	double time_bnds(time, bnds) ;
+	double plev(plev) ;
+		plev:units = "Pa" ;
+		plev:axis = "Z" ;
+		plev:positive = "down" ;
+		plev:long_name = "Pressure Levels (19)" ;
+		plev:standard_name = "air_pressure" ;
+	double lat(lat) ;
+		lat:bounds = "lat_bnds" ;
+		lat:units = "degrees_north" ;
+		lat:axis = "Y" ;
+		lat:long_name = "Latitude" ;
+		lat:standard_name = "latitude" ;
+	double lat_bnds(lat, bnds) ;
+	double lon(lon) ;
+		lon:bounds = "lon_bnds" ;
+		lon:units = "degrees_east" ;
+		lon:axis = "X" ;
+		lon:long_name = "Longitude" ;
+		lon:standard_name = "longitude" ;
+	double lon_bnds(lon, bnds) ;
+	float ta(time, plev, lat, lon) ;
+		ta:standard_name = "air_temperature" ;
+		ta:long_name = "Air Temperature" ;
+		ta:units = "K" ;
+		ta:cell_methods = "area: time: mean where air" ;
+		ta:missing_value = 1.e+20f ;
+		ta:_FillValue = 1.e+20f ;
+		ta:cell_measures = "area: areacella" ;
+
+// global attributes:
+		:Conventions = "CF-1.12" ;
+		:activity_id = "CMIP" ;
+		:area_label = "air" ;
+		:branded_variable = "ta_tavg-p19-hxy-air" ;
+		:branding_suffix = "tavg-p19-hxy-air" ;
+		:creation_date = "2026-07-13T18:09:45Z" ;
+		:data_specs_version = "MIP-DS7.1.0.0" ;
+		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:drs_specs = "MIP-DRS7" ;
+		:experiment = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:experiment_id = "amip" ;
+		:external_variables = "areacella" ;
+		:forcing_index = "f1" ;
+		:frequency = "mon" ;
+		:grid_label = "g999" ;
+		:history = "2026-07-13T18:09:45Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:horizontal_label = "hxy" ;
+		:initialization_index = "i1" ;
+		:institution = "Met Office Hadley Centre" ;
+		:institution_id = "MOHC" ;
+		:license_id = "CC-BY-4.0" ;
+		:mip_era = "CMIP7" ;
+		:nominal_resolution = "100 km" ;
+		:physics_index = "p1" ;
+		:product = "model-output" ;
+		:realization_index = "r1" ;
+		:realm = "atmos" ;
+		:region = "glb" ;
+		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
+		:source_id = "ACCESS-ESM1-6" ;
+		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-01 12:00:41) MD5:6d699a80e3231888efe8abea7d5ae8f1" ;
+		:temporal_label = "tavg" ;
+		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
+		:tracking_id = "hdl:21.14107/8bf3ceee-7349-4e00-90ac-5d39ae6bfaab" ;
+		:variable_id = "ta" ;
+		:variant_label = "r1i1p1f1" ;
+		:vertical_label = "p19" ;
+		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
+		:cmor_version = "3.15.2" ;
+data:
+
+ time = 15.5, 45.5 ;
+
+ time_bnds =
+  0, 31,
+  31, 60 ;
+
+ plev = 100000, 92500, 85000, 70000, 60000, 50000, 40000, 30000, 25000, 
+    20000, 15000, 10000, 7000, 5000, 3000, 2000, 1000, 500, 100 ;
+
+ lat = 10, 20, 30 ;
+
+ lat_bnds =
+  5, 15,
+  15, 25,
+  25, 35 ;
+
+ lon = 0, 90, 180, 270 ;
+
+ lon_bnds =
+  -45, 45,
+  45, 135,
+  135, 225,
+  225, 315 ;
+
+ ta =
+  _, 250.0549, 250.1099, 250.1648,
+  250.2198, 250.2747, 250.3297, 250.3846,
+  250.4396, 250.4945, 250.5495, 250.6044,
+  250.6593, 250.7143, 250.7692, 250.8242,
+  250.8791, 250.9341, 250.989, 251.044,
+  251.0989, 251.1538, 251.2088, 251.2637,
+  251.3187, 251.3736, 251.4286, 251.4835,
+  251.5385, 251.5934, 251.6483, 251.7033,
+  251.7582, 251.8132, 251.8681, 251.9231,
+  251.978, 252.033, 252.0879, 252.1429,
+  252.1978, 252.2527, 252.3077, 252.3626,
+  252.4176, 252.4725, 252.5275, 252.5824,
+  252.6374, 252.6923, 252.7473, 252.8022,
+  252.8571, 252.9121, 252.967, 253.022,
+  253.0769, 253.1319, 253.1868, 253.2418,
+  253.2967, 253.3517, 253.4066, 253.4615,
+  253.5165, 253.5714, 253.6264, 253.6813,
+  253.7363, 253.7912, 253.8462, 253.9011,
+  253.956, 254.011, 254.0659, 254.1209,
+  254.1758, 254.2308, 254.2857, 254.3407,
+  254.3956, 254.4505, 254.5055, 254.5604,
+  254.6154, 254.6703, 254.7253, 254.7802,
+  254.8352, 254.8901, 254.9451, 255,
+  255.0549, 255.1099, 255.1648, 255.2198,
+  255.2747, 255.3297, 255.3846, 255.4396,
+  255.4945, 255.5495, 255.6044, 255.6593,
+  255.7143, 255.7692, 255.8242, 255.8791,
+  255.9341, 255.989, 256.0439, 256.0989,
+  256.1538, 256.2088, 256.2637, 256.3187,
+  256.3736, 256.4286, 256.4835, 256.5385,
+  256.5934, 256.6483, 256.7033, 256.7582,
+  256.8132, 256.8681, 256.9231, 256.978,
+  257.033, 257.0879, 257.1429, 257.1978,
+  257.2527, 257.3077, 257.3626, 257.4176,
+  257.4725, 257.5275, 257.5824, 257.6374,
+  257.6923, 257.7473, 257.8022, 257.8571,
+  257.9121, 257.967, 258.022, 258.0769,
+  258.1319, 258.1868, 258.2418, 258.2967,
+  258.3517, 258.4066, 258.4615, 258.5165,
+  258.5714, 258.6264, 258.6813, 258.7363,
+  258.7912, 258.8462, 258.9011, 258.9561,
+  259.011, 259.0659, 259.1209, 259.1758,
+  259.2308, 259.2857, 259.3407, 259.3956,
+  259.4506, 259.5055, 259.5604, 259.6154,
+  259.6703, 259.7253, 259.7802, 259.8352,
+  259.8901, 259.9451, 260, 260.0549,
+  260.1099, 260.1648, 260.2198, 260.2747,
+  260.3297, 260.3846, 260.4396, 260.4945,
+  260.5494, 260.6044, 260.6593, 260.7143,
+  260.7692, 260.8242, 260.8791, 260.9341,
+  260.989, 261.0439, 261.0989, 261.1538,
+  261.2088, 261.2637, 261.3187, 261.3736,
+  261.4286, 261.4835, 261.5385, 261.5934,
+  261.6483, 261.7033, 261.7582, 261.8132,
+  261.8681, 261.9231, 261.978, 262.033,
+  262.0879, 262.1429, 262.1978, 262.2527,
+  262.3077, 262.3626, 262.4176, 262.4725,
+  262.5275, 262.5824, 262.6374, 262.6923,
+  262.7473, 262.8022, 262.8571, 262.9121,
+  262.967, 263.022, 263.0769, 263.1319,
+  263.1868, 263.2418, 263.2967, 263.3517,
+  263.4066, 263.4615, 263.5165, 263.5714,
+  263.6264, 263.6813, 263.7363, 263.7912,
+  263.8462, 263.9011, 263.9561, 264.011,
+  264.0659, 264.1209, 264.1758, 264.2308,
+  264.2857, 264.3407, 264.3956, 264.4506,
+  264.5055, 264.5604, 264.6154, 264.6703,
+  264.7253, 264.7802, 264.8352, 264.8901,
+  264.9451, 265, 265.0549, 265.1099,
+  265.1648, 265.2198, 265.2747, 265.3297,
+  265.3846, 265.4396, 265.4945, 265.5494,
+  265.6044, 265.6593, 265.7143, 265.7692,
+  265.8242, 265.8791, 265.9341, 265.989,
+  266.0439, 266.0989, 266.1538, 266.2088,
+  266.2637, 266.3187, 266.3736, 266.4286,
+  266.4835, 266.5385, 266.5934, 266.6483,
+  266.7033, 266.7582, 266.8132, 266.8681,
+  266.9231, 266.978, 267.033, 267.0879,
+  267.1429, 267.1978, 267.2527, 267.3077,
+  267.3626, 267.4176, 267.4725, 267.5275,
+  267.5824, 267.6374, 267.6923, 267.7473,
+  267.8022, 267.8571, 267.9121, 267.967,
+  268.022, 268.0769, 268.1319, 268.1868,
+  268.2418, 268.2967, 268.3517, 268.4066,
+  268.4615, 268.5165, 268.5714, 268.6264,
+  268.6813, 268.7363, 268.7912, 268.8462,
+  268.9011, 268.9561, 269.011, 269.0659,
+  269.1209, 269.1758, 269.2308, 269.2857,
+  269.3407, 269.3956, 269.4506, 269.5055,
+  269.5604, 269.6154, 269.6703, 269.7253,
+  269.7802, 269.8352, 269.8901, 269.9451,
+  270, 270.0549, 270.1099, 270.1648,
+  270.2198, 270.2747, 270.3297, 270.3846,
+  270.4396, 270.4945, 270.5494, 270.6044,
+  270.6593, 270.7143, 270.7692, 270.8242,
+  270.8791, 270.9341, 270.989, 271.0439,
+  271.0989, 271.1538, 271.2088, 271.2637,
+  271.3187, 271.3736, 271.4286, 271.4835,
+  271.5385, 271.5934, 271.6483, 271.7033,
+  271.7582, 271.8132, 271.8681, 271.9231,
+  271.978, 272.033, 272.0879, 272.1429,
+  272.1978, 272.2527, 272.3077, 272.3626,
+  272.4176, 272.4725, 272.5275, 272.5824,
+  272.6374, 272.6923, 272.7473, 272.8022,
+  272.8571, 272.9121, 272.967, 273.022,
+  273.0769, 273.1319, 273.1868, 273.2418,
+  273.2967, 273.3517, 273.4066, 273.4615,
+  273.5165, 273.5714, 273.6264, 273.6813,
+  273.7363, 273.7912, 273.8462, 273.9011,
+  273.9561, 274.011, 274.0659, 274.1209,
+  274.1758, 274.2308, 274.2857, 274.3407,
+  274.3956, 274.4506, 274.5055, 274.5604,
+  274.6154, 274.6703, 274.7253, 274.7802,
+  274.8352, 274.8901, 274.9451, 275 ;
+}
