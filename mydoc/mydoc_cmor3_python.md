@@ -1,12 +1,12 @@
 ---
 title: Python Examples
-tags: [examples, python]
+tags: [examples, python, cmip7]
 keywords: example, python
 sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_python/
 ---
 
-These examples are based on the CMOR repository's [examples/python](https://github.com/PCMDI/cmor/tree/main/examples/python) directory. They use one shared CMIP7 user input file and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables).
+These examples are based on the CMOR repository's [examples/python](https://github.com/PCMDI/cmor/tree/main/examples/python){:target="_blank"} directory. They use one shared CMIP7 user input file and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
 
 Install CMOR with conda:
 
