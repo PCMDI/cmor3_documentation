@@ -1,0 +1,104 @@
+netcdf htovgyre_tavg-u-hyb-sea_mon_glb_g999_ACCESS-ESM1-6_amip_r1i1p1f1_197901-197902 {
+dimensions:
+	time = UNLIMITED ; // (2 currently)
+	basin = 3 ;
+	lat = 3 ;
+	bnds = 2 ;
+	strlen = 21 ;
+variables:
+	double time(time) ;
+		time:bounds = "time_bnds" ;
+		time:units = "days since 1979-01-01" ;
+		time:calendar = "360_day" ;
+		time:axis = "T" ;
+		time:long_name = "Time Intervals" ;
+		time:standard_name = "time" ;
+	double time_bnds(time, bnds) ;
+	char sector(basin, strlen) ;
+		sector:long_name = "Ocean Basin" ;
+		sector:standard_name = "region" ;
+	double lat(lat) ;
+		lat:bounds = "lat_bnds" ;
+		lat:units = "degrees_north" ;
+		lat:axis = "Y" ;
+		lat:long_name = "Latitude" ;
+		lat:standard_name = "latitude" ;
+	double lat_bnds(lat, bnds) ;
+	float htovgyre(time, basin, lat) ;
+		htovgyre:standard_name = "northward_ocean_heat_transport_due_to_gyre" ;
+		htovgyre:long_name = "Northward Ocean Heat Transport Due to Gyre" ;
+		htovgyre:units = "W" ;
+		htovgyre:cell_methods = "depth: longitude: sum where sea (along a zig-zag grid path spanning a basin)  time: mean" ;
+		htovgyre:missing_value = 1.e+20f ;
+		htovgyre:_FillValue = 1.e+20f ;
+		htovgyre:coordinates = "sector" ;
+
+// global attributes:
+		:Conventions = "CF-1.12" ;
+		:activity_id = "CMIP" ;
+		:area_label = "sea" ;
+		:branded_variable = "htovgyre_tavg-u-hyb-sea" ;
+		:branding_suffix = "tavg-u-hyb-sea" ;
+		:creation_date = "2026-07-14T00:50:02Z" ;
+		:data_specs_version = "MIP-DS7.1.0.0" ;
+		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:drs_specs = "MIP-DRS7" ;
+		:experiment = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:experiment_id = "amip" ;
+		:forcing_index = "f1" ;
+		:frequency = "mon" ;
+		:grid_label = "g999" ;
+		:history = "2026-07-14T00:50:02Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:horizontal_label = "hyb" ;
+		:initialization_index = "i1" ;
+		:institution = "Met Office Hadley Centre" ;
+		:institution_id = "MOHC" ;
+		:license_id = "CC-BY-4.0" ;
+		:mip_era = "CMIP7" ;
+		:nominal_resolution = "100 km" ;
+		:outpath = "/Users/mauzey1/Desktop/github/cmor3_documentation/mydoc/examples/c/output/example_04_basin_axis" ;
+		:physics_index = "p1" ;
+		:product = "model-output" ;
+		:realization_index = "r1" ;
+		:realm = "ocean" ;
+		:region = "glb" ;
+		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
+		:source_id = "ACCESS-ESM1-6" ;
+		:table_info = "Name: CMIP7_ocean.json; Creation Date:(2026-07-09 13:08:05) MD5:49b5e8ac801654031916194725c55809" ;
+		:temporal_label = "tavg" ;
+		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
+		:tracking_id = "hdl:21.14107/965971cf-4631-48f2-8d10-843649fa1a88" ;
+		:variable_id = "htovgyre" ;
+		:variant_label = "r1i1p1f1" ;
+		:vertical_label = "u" ;
+		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
+		:cmor_version = "3.15.2" ;
+data:
+
+ time = 15.5, 45.5 ;
+
+ time_bnds =
+  0, 31,
+  31, 60 ;
+
+ sector =
+  "atlantic_arctic_ocean",
+  "indian_pacific_ocean",
+  "global_ocean" ;
+
+ lat = 10, 20, 30 ;
+
+ lat_bnds =
+  5, 15,
+  15, 25,
+  25, 35 ;
+
+ htovgyre =
+  -80, -84, -88,
+  -100, -104, -76,
+  -120, -92, -96,
+  -79, -83, -87,
+  -99, -103, -75,
+  -107, -111, -115 ;
+}
+

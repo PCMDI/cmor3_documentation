@@ -1,510 +1,227 @@
 ---
-title: C example
-tags: [examples, c]
-keywords: example, C
+title: C Examples
+tags: [examples, c, cmip7]
+keywords: example, C, cmip7
 sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_c/
 ---
 
-### CMOR user input
+These examples are based on the CMOR repository's [examples/c](https://github.com/PCMDI/cmor/tree/c_examples/examples/c){:target="_blank"} directory. They use the same shared CMIP7 user input file as the Python and Fortran examples and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
 
-* [CMOR_input_example.json](https://github.com/PCMDI/cmor/blob/main/Test/CMOR_input_example.json)
+Create and activate a Conda or Mamba environment with CMOR and a C compiler:
 
-<details><summary markdown="span"><b>Click to expand JSON file</b></summary>
+```bash
+mamba create -n cmor-c -c conda-forge cmor c-compiler libnetcdf udunits2 json-c libuuid
+mamba activate cmor-c
+```
+
+If you use Conda instead of Mamba, use the same package list:
+
+```bash
+conda create -n cmor-c -c conda-forge cmor c-compiler libnetcdf udunits2 json-c libuuid
+conda activate cmor-c
+```
+
+Install the CMIP7 tables in the working directory where you will run the examples:
+
+```bash
+git clone https://github.com/WCRP-CMIP/cmip7-cmor-tables.git
+```
+
+Run the examples from a working directory that contains the `cmip7-cmor-tables` repository using the [run_examples.sh]({{site.baseurl}}/mydoc/examples/c/run_examples.sh){:target="_blank"} script:
+
+```bash
+chmod a+x run_examples.sh
+./run_examples.sh
+```
+
+The examples expect tables under `./cmip7-cmor-tables/tables` in the directory where you run the script. To use a different table location, set `CMOR_TABLES_PATH` to the directory containing the CMIP7 table JSON files. To use a different user input file, set `CMOR_INPUT_PATH`.
+
+Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_cell_measures.json` and `CMIP7_long_name_overrides.json` before writing data. The fixed-field example overrides `frequency` from the shared user input file to `fx`.
+
+### CMOR Input Files
+
+* [CMIP7_input_example.json]({{site.baseurl}}/mydoc/examples/CMIP7_input_example.json){:target="_blank"}
+* [CMIP7_coordinate.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_coordinate.json){:target="_blank"}
+* [CMIP7_formula_terms.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_formula_terms.json){:target="_blank"}
+* [CMIP7_cell_measures.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_cell_measures.json){:target="_blank"}
+* [CMIP7_long_name_overrides.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables/CMIP7_long_name_overrides.json){:target="_blank"}
+* [cmor-cvs.json](https://github.com/WCRP-CMIP/cmip7-cmor-tables/blob/main/tables-cvs/cmor-cvs.json){:target="_blank"}
+
+<details><summary markdown="span"><b>Click to expand shared JSON input</b></summary>
 
 ```json
-{
-    "#note":           "explanation of what source_type is goes here",
-    "source_type":            "AOGCM ISM AER",
- 
-    "#note":                  "CMIP6 valid experiment_ids are found in CMIP6_CV.json",
-    "experiment_id":          "piControl-withism",
-    "activity_id":            "ISMIP6",
-    "sub_experiment_id":      "none",
- 
-    "realization_index":      "3",
-    "initialization_index":   "1",
-    "physics_index":          "1",
-    "forcing_index":          "1",
- 
-    "#note":                  "Text stored in attribute variant_info (recommended, not required description of run variant)",
-    "run_variant":            "3rd realization",
- 
-    "parent_experiment_id":   "historical",
-    "parent_activity_id":     "CMIP",
-    "parent_source_id":       "PCMDI-test-1-0",
-    "parent_variant_label":   "r3i1p1f1",
- 
-    "parent_time_units":      "days since 1850-01-01",
-    "branch_method":          "standard",
-    "branch_time_in_child":   59400.0,
-    "branch_time_in_parent":  59400.0,
- 
-    "#note":                  "institution_id must be registered at https://github.com/WCRP-CMIP/CMIP6_CVs/issues/new ",
-    "institution_id":         "PCMDI",
- 
-    "#note":                  "source_id (model name) must be registered at https://github.com/WCRP-CMIP/CMIP6_CVs/issues/new ",
-    "source_id":              "PCMDI-test-1-0",
- 
-    "calendar":               "360_day",
- 
-    "grid":                   "native atmosphere regular grid (3x4 latxlon)",
-    "grid_label":             "gn",
-    "nominal_resolution":     "10000 km",
- 
-    "license":                 "CMIP6 model data produced by Lawrence Livermore PCMDI is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at https:///pcmdi.llnl.gov/. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
- 
-    "#output":                "Root directory for output (can be either a relative or full path)",
-    "outpath":                "CMIP6",
- 
-    "#note":                  " **** The following descriptors are optional and may be set to an empty string ",  
- 
-    "contact ":               "Python Coder (coder@a.b.c.com)",
-    "history":                "Output from archivcl_A1.nce/giccm_03_std_2xCO2_2256.",
-    "comment":                "",
-    "references":             "Model described by Koder and Tolkien (J. Geophys. Res., 2001, 576-591).  Also see http://www.GICC.su/giccm/doc/index.html.  The ssp245 simulation is described in Dorkey et al. '(Clim. Dyn., 2003, 323-357.)'",
- 
-    "#note":                  " **** The following will be obtained from the CV and do not need to be defined here", 
- 
-    "sub_experiment":         "none",
-    "institution":            "",
-    "source":                 "PCMDI-test 1.0 (1989)",
- 
-    "#note":                  " **** The following are set correctly for CMIP6 and should not normally need editing",  
- 
-    "_controlled_vocabulary_file": "CMIP6_CV.json",
-    "_AXIS_ENTRY_FILE":         "CMIP6_coordinate.json",
-    "_FORMULA_VAR_FILE":        "CMIP6_formula_terms.json",
-    "_cmip6_option":           "CMIP6",
- 
-    "mip_era":                "CMIP6",
-    "parent_mip_era":         "CMIP6",
- 
-    "tracking_prefix":        "hdl:21.14100",
-    "_history_template":       "%s ;rewrote data to be consistent with <activity_id> for variable <variable_id> found in table <table_id>.",
- 
-    "#output_path_template":   "Template for output path directory using tables keys or global attributes, these should follow the relevant data reference syntax",
-    "output_path_template":    "<mip_era><activity_id><institution_id><source_id><experiment_id><_member_id><table><variable_id><grid_label><version>",
-    "output_file_template":    "<variable_id><table><source_id><experiment_id><_member_id><grid_label>",
-}
-
-
-
+{% include_relative examples/CMIP7_input_example.json %}
 ```
+
 </details>
 
+### Common C Utilities
 
-### C source code
+* [cmip7_c_common.h]({{site.baseurl}}/mydoc/examples/c/cmip7_c_common.h){:target="_blank"}
+* [cmip7_c_common.c]({{site.baseurl}}/mydoc/examples/c/cmip7_c_common.c){:target="_blank"}
+* [run_examples.sh]({{site.baseurl}}/mydoc/examples/c/run_examples.sh){:target="_blank"}
 
-* [ipcc_test_code.c](https://github.com/PCMDI/cmor/blob/main/Test/ipcc_test_code.c)
-* [reader_2D_3D.h](https://github.com/PCMDI/cmor/blob/main/Test/reader_2D_3D.h)
+<details><summary markdown="span"><b>Click to expand common C header</b></summary>
+
+```c
+{% include_relative examples/c/cmip7_c_common.h %}
+```
+
+</details>
+
+<details><summary markdown="span"><b>Click to expand common C code</b></summary>
+
+```c
+{% include_relative examples/c/cmip7_c_common.c %}
+```
+
+</details>
+
+<details><summary markdown="span"><b>Click to expand runner script</b></summary>
+
+```bash
+{% include_relative examples/c/run_examples.sh %}
+```
+
+</details>
+
+### Example 1: Regular Grid Ocean Field
+
+* [example_01_regular_grid_tos.c]({{site.baseurl}}/mydoc/examples/c/example_01_regular_grid_tos.c){:target="_blank"}
 
 <details><summary markdown="span"><b>Click to expand C code</b></summary>
 
 ```c
-#include <time.h>
-#include <stdio.h>
-#include<string.h>
-#include "cmor.h"
-#include <stdlib.h>
+{% include_relative examples/c/example_01_regular_grid_tos.c %}
+```
 
-void read_coords(alats, alons, plevs, bnds_lat, bnds_lon, lon, lat, lev)
-double *alats, *alons;
-int *plevs;
-double *bnds_lat, *bnds_lon;
-int lon, lat, lev;
-{
-    int i;
+</details>
 
-    for (i = 0; i < lon; i++) {
-        alons[i] = i * 360. / lon;
-        bnds_lon[2 * i] = (i - 0.5) * 360. / lon;
-        bnds_lon[2 * i + 1] = (i + 0.5) * 360. / lon;
-    };
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    for (i = 0; i < lat; i++) {
-        alats[i] = (lat - i) * 10;
-        bnds_lat[2 * i] = (lat - i) * 10 + 5.;
-        bnds_lat[2 * i + 1] = (lat - i) * 10 - 5.;
-    };
+```text
+{% include_relative examples/c/example_01_regular_grid_tos.cdl %}
+```
 
-    plevs[0] = 1000;
-    plevs[1] = 925;
-    plevs[2] = 850;
-    plevs[3] = 700;
-    plevs[4] = 600;
-    plevs[5] = 500;
-    plevs[6] = 400;
-    plevs[7] = 300;
-    plevs[8] = 250;
-    plevs[9] = 200;
-    plevs[10] = 150;
-    plevs[11] = 100;
-    plevs[12] = 70;
-    plevs[13] = 50;
-    plevs[14] = 30;
-    plevs[15] = 20;
-    plevs[16] = 10;
-    plevs[17] = 5;
-    plevs[18] = 1;
-}
+</details>
 
-void read_time(it, time, time_bnds)
-int it;
-double time[];
-double time_bnds[];
-{
-    time[0] = (it - 0.5) * 30.;
-    time_bnds[0] = (it - 1) * 30.;
-    time_bnds[1] = it * 30.;
+### Example 2: 3-D Field on Pressure Levels
 
-    time[0] = it;
-    time_bnds[0] = it;
-    time_bnds[1] = it + 1;
+* [example_02_pressure_levels.c]({{site.baseurl}}/mydoc/examples/c/example_02_pressure_levels.c){:target="_blank"}
 
-}
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-#include "reader_2D_3D.h"
+```c
+{% include_relative examples/c/example_02_pressure_levels.c %}
+```
 
-int main()
-/*   Purpose:   To serve as a generic example of an application that */
-/*       uses the "Climate Model Output Rewriter" (CMOR) */
-/*    CMOR writes CF-compliant netCDF files. */
-/*    Its use is strongly encouraged by the IPCC and is intended for use  */
-/*       by those participating in many community-coordinated standard  */
-/*       climate model experiments (e.g., AMIP, CMIP, CFMIP, PMIP, APE, */
-/*       etc.) */
-/*   Background information for this sample code: */
-/*      Atmospheric standard output requested by IPCC are listed in  */
-/*   tables available on the web.  Monthly mean output is found in */
-/*   tables A1a and A1c.  This sample code processes only two 3-d  */
-/*   variables listed in table A1c ("monthly mean atmosphere 3-D data"  */
-/*   and only four 2-d variables listed in table A1a ("monthly mean  */
-/*   atmosphere + land surface 2-D (latitude, longitude) data").  The  */
-/*   extension to many more fields is trivial. */
-/*      For this example, the user must fill in the sections of code that  */
-/*   extract the 3-d and 2-d fields from his monthly mean "history"  */
-/*   files (which usually contain many variables but only a single time  */
-/*   slice).  The CMOR code will write each field in a separate file, but  */
-/*   many monthly mean time-samples will be stored together.  These  */
-/*   constraints partially determine the structure of the code. */
-/*   Record of revisions: */
-/*       Date        Programmer(s)           Description of change */
-/*       ====        ==========              ===================== */
-/*      10/22/03     Rusty Koder              Original code */
-/*       1/28/04     Les R. Koder             Revised to be consistent */
-/*                                            with evolving code design */
-{
-    /* --------------------------------- */
-    /*   dimension parameters: */
-    /* --------------------------------- */
-#define   ntimes  2             /* number of time samples to process */
-#define   lon  4                /* number of longitude grid cells   */
-#define   lat  3                /* number of latitude grid cells */
-#define   lev  19               /* number of standard pressure levels */
-#define   n2d  4                /* number of IPCC Table A1a fields to be output. */
-#define   n3d 3                 /* number of IPCC Table A1c fields to be output. */
+</details>
 
-    /*   Tables associating the user's variables with IPCC standard output  */
-    /*   variables.  The user may choose to make this association in a  */
-    /*   different way (e.g., by defining values of pointers that allow him  */
-    /*   to directly retrieve data from a data record containing many  */
-    /*   different variables), but in some way the user will need to map his  */
-    /*   model output onto the Tables specifying the MIP standard output. */
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    /* ---------------------------------- */
+```text
+{% include_relative examples/c/example_02_pressure_levels.cdl %}
+```
 
-    /* My variable names for IPCC Table A1c fields */
-    char varin3d[n3d][6] = { "CLOUD", "U", "T" };
+</details>
 
-    /* Units appropriate to my data */
-    char units3d[n3d][6] = { "%", "m s-1", "K" };
+### Example 3: Scalar Height Coordinate
 
-    /* Corresponding IPCC Table A1c entry (variable name)  */
-    char entry3d[n3d][3] = { "cl", "ua", "ta" };
+* [example_03_scalar_height_tas.c]({{site.baseurl}}/mydoc/examples/c/example_03_scalar_height_tas.c){:target="_blank"}
 
-    /* My variable names for IPCC Table A1a fields */
-    char varin2d[n2d][9] = { "LATENT", "TSURF", "SOIL_WET", "PSURF" };
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-    /* Units appropriate to my data */
-    char units2d[n2d][7] = { "W m-2", "K", "kg m-2", "Pa" };
+```c
+{% include_relative examples/c/example_03_scalar_height_tas.c %}
+```
 
-    char positive2d[n2d][4] = { "down", " ", " ", " " };
+</details>
 
-    /* Corresponding IPCC Table A1a entry (variable name)  */
-    char entry2d[n2d][6] = { "hfls", "tas", "mrsos", "ps" };
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-/*  uninitialized variables used in communicating with CMOR: */
-/*  --------------------------------------------------------- */
+```text
+{% include_relative examples/c/example_03_scalar_height_tas.cdl %}
+```
 
-    int error_flag;
-    int znondim_id, zfactor_id;
-    int var2d_ids[n2d];
-    int var3d_ids[n3d];
-    double data2d[lat * lon];
-    double data3d[lev * lat * lon];
-    double alats[lat];
-    double alons[lon];
-    int ilats[lat];
-    int ilons[lon];
-    double plevs[lev];
-    int iplevs[lev];
-    long lplevs[lev];
-    float fplevs[lev];
-    double Time[2];
-    double bnds_time[4];
-    double bnds_lat[lat * 2];
-    double bnds_lon[lon * 2];
-    double zlevs[lev];
-    double zlev_bnds[lev + 1];
+</details>
 
-    double a_coeff[lev] = { 0.1, 0.2, 0.3, 0.22, 0.1 };
-    double b_coeff[lev] = { 0.0, 0.1, 0.2, 0.5, 0.8 };
-    float p0 = 1.e5;
-    double a_coeff_bnds[lev + 1] = { 0., .15, .25, .25, .16, 0. };
-    double b_coeff_bnds[lev + 1] = { 0., .05, .15, .35, .65, 1. };
-    int ilon, ilat, ipres, ilev, itim;
-    double dtmp, dtmp2;
+### Example 4: Basin Axis
 
-    /*  Other variables: */
-    /*  --------------------- */
+* [example_04_basin_axis.c]({{site.baseurl}}/mydoc/examples/c/example_04_basin_axis.c){:target="_blank"}
 
-    int it, m, i, ierr, j;
-    int myaxes[10];
-    int myaxes2[10];
-    int myvars[10];
-    char id[CMOR_MAX_STRING];
-    char units[CMOR_MAX_STRING];
-    char interval[CMOR_MAX_STRING];
-    char anames[25][CMOR_MAX_STRING];
-    char type;
-    char regions[5][23] =
-      { "atlantic_arctic_ocean", "indian_pacific_ocean", "pacific_ocean",
-        "global_ocean", "sf_bay"
-    };
-    double timestest[5];
-    /* Externals funcs */
-    int tables[5];
-    char msg[555];
-    double bt = 0.;
-    /* ================================ */
-    /*  Execution begins here: */
-    /* ================================ */
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-    /* Read coordinate information from model into arrays that will be passed  */
-    /*   to CMOR. */
-    /* Read latitude, longitude, and pressure coordinate values into  */
-    /*   alats, alons, and plevs, respectively.  Also generate latitude and  */
-    /*   longitude bounds, and store in bnds_lat and bnds_lon, respectively. */
-    /*   Note that all variable names in this code can be freely chosen by */
-    /*   the user. */
+```c
+{% include_relative examples/c/example_04_basin_axis.c %}
+```
 
-    /*   The user must write the subroutine that fills the coordinate arrays  */
-    /*   and their bounds with actual data.  The following line is simply a */
-    /*   a place-holder for the user's code, which should replace it. */
+</details>
 
-    /*  *** possible user-written call *** */
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    m = CMOR_EXIT_ON_MAJOR;
-    j = CMOR_REPLACE_4;
-    i = 1;
-    it = 0;
-    printf("ok mode is:%i\n", m);
-    ierr = cmor_setup(NULL, &j, NULL, &m, NULL, &i);    //,"  ipcc_test.LOG  ");
+```text
+{% include_relative examples/c/example_04_basin_axis.cdl %}
+```
 
-    read_coords(&alats[0], &alons[0], &iplevs[0], &bnds_lat[0], &bnds_lon[0],
-                lon, lat, lev);
-    int tmpmo[12];
-    printf("Test code: ok init cmor\n");
-    char c1[CMOR_MAX_STRING];
-    char c2[CMOR_MAX_STRING];
-    strcpy(c1, "GICCM1(2002)\0");
-    strcpy(c2, "Nat\0");
+</details>
 
-    printf("yep: %s, %s\n", c1, c2);
-    ierr = cmor_dataset_json("Test/CMOR_input_example.json");
+### Example 5: Hybrid Sigma Model Levels
 
-    printf("Test code: ok load cmor table(s)\n");
-    ierr = cmor_load_table("Tables/CMIP6_Omon.json", &tables[0]);
-    ierr = cmor_load_table("Tables/CMIP6_Amon.json", &tables[1]);
+* [example_05_hybrid_sigma_levels.c]({{site.baseurl}}/mydoc/examples/c/example_05_hybrid_sigma_levels.c){:target="_blank"}
 
-    strcpy(id, "time");
-    strcpy(units, "months since 1980");
-    strcpy(interval, "1 month");
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-    read_time(0, &Time[0], &bnds_time[0]);
-    read_time(1, &Time[1], &bnds_time[2]);
-    ierr =
-      cmor_axis(&myaxes[0], id, units, ntimes, &Time[0], 'd', &bnds_time[0], 2,
-                interval);
+```c
+{% include_relative examples/c/example_05_hybrid_sigma_levels.c %}
+```
 
-    strcpy(id, "latitude");
-    strcpy(units, "degrees_north");
-    strcpy(interval, "");
-    ierr =
-      cmor_axis(&myaxes[1], id, units, lat, &alats, 'd', &bnds_lat, 2,
-                interval);
+</details>
 
-    strcpy(id, "longitude");
-    strcpy(units, "degrees_east");
-    ierr =
-      cmor_axis(&myaxes[2], id, units, lon, &alons, 'd', &bnds_lon, 2,
-                interval);
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    strcpy(id, "plev19");
-    strcpy(units, "hPa");
-    ierr =
-      cmor_axis(&myaxes[3], id, units, lev, &iplevs, 'i', NULL, 0, interval);
+```text
+{% include_relative examples/c/example_05_hybrid_sigma_levels.cdl %}
+```
 
-    zlevs[0] = 0.1;
-    zlevs[1] = 0.3;
-    zlevs[2] = 0.5;
-    zlevs[3] = 0.72;
-    zlevs[4] = 0.9;
+</details>
 
-    zlev_bnds[0] = 0.;
-    zlev_bnds[1] = .2;
-    zlev_bnds[2] = .42;
-    zlev_bnds[3] = .62;
-    zlev_bnds[4] = .8;
-    zlev_bnds[5] = 1.;
-/*   p0 = 1.e5; */
-/*   a_coeff = { 0.1, 0.2, 0.3, 0.22, 0.1 }; */
-/*   b_coeff = { 0.0, 0.1, 0.2, 0.5, 0.8 }; */
+### Example 6: Curvilinear Grid
 
-/*   a_coeff_bnds={0.,.15, .25, .25, .16, 0.}; */
-/*   b_coeff_bnds={0.,.05, .15, .35, .65, 1.}; */
+* [example_06_curvilinear_grid.c]({{site.baseurl}}/mydoc/examples/c/example_06_curvilinear_grid.c){:target="_blank"}
 
-    ierr =
-      cmor_axis(&myaxes[4], "standard_hybrid_sigma", "1", 5, &zlevs, 'd',
-                &zlev_bnds, 1, interval);
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-    cmor_set_table(tables[0]);
-    /* ok here we declare a "regions" axis */
-    printf("Test code: defining axis region \n");
-    ierr =
-      cmor_axis(&myaxes[5], "basin", "", 4, &regions[0], 'c', NULL, 23,
-                interval);
+```c
+{% include_relative examples/c/example_06_curvilinear_grid.c %}
+```
 
-    printf("Test code: Redefining time/lat from O table\n");
+</details>
 
-    strcpy(id, "time");
-    strcpy(units, "months since 1980");
-    strcpy(interval, "1 month");
-    read_time(0, &Time[0], &bnds_time[0]);
-    read_time(1, &Time[1], &bnds_time[2]);
-    ierr =
-      cmor_axis(&myaxes[7], id, units, ntimes, &Time[0], 'd', &bnds_time[0], 2,
-                interval);
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    strcpy(id, "latitude");
-    strcpy(units, "degrees_north");
-    strcpy(interval, "");
-    ierr =
-      cmor_axis(&myaxes[8], id, units, lat, &alats, 'd', &bnds_lat, 2,
-                interval);
+```text
+{% include_relative examples/c/example_06_curvilinear_grid.cdl %}
+```
 
-    cmor_set_table(tables[1]);
+</details>
 
-    dtmp = -999;
-    dtmp2 = 1.e-4;
-    myaxes2[0] = myaxes[0];
-    myaxes2[1] = myaxes[3];
-    myaxes2[2] = myaxes[1];
-    myaxes2[3] = myaxes[2];
+### Example 7: Fixed Field
 
-    printf("Test code: defining variables from table 1, %s\n", positive2d[0]);
-    ierr =
-      cmor_variable(&myvars[0], entry2d[0], units2d[0], 3, myaxes, 'd', &dtmp,
-                    &dtmp2, positive2d[0], varin2d[0], "no history",
-                    "no future");
-    ierr =
-      cmor_variable(&myvars[1], entry3d[2], units3d[2], 4, myaxes2, 'd', NULL,
-                    &dtmp2, NULL, varin3d[2], "no history", "no future");
+* [example_07_fixed_field_rootd.c]({{site.baseurl}}/mydoc/examples/c/example_07_fixed_field_rootd.c){:target="_blank"}
 
-    printf("Test code: definig tas\n");
-    ierr =
-      cmor_variable(&myvars[5], "tas", "K", 3, myaxes, 'd', NULL, &dtmp2, NULL,
-                    "TS", "no history", "no future");
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
 
-    myaxes2[1] = myaxes[4];
-    ierr =
-      cmor_variable(&myvars[2], entry3d[0], units3d[0], 4, myaxes2, 'd', NULL,
-                    &dtmp2, NULL, varin3d[0], "no history", "no future");
-    ierr =
-      cmor_zfactor(&myvars[3], myaxes2[1], "p0", "Pa", 0, NULL, 'f', &p0, NULL);
-    ierr =
-      cmor_zfactor(&myvars[3], myaxes2[1], "b", "", 1, &myaxes2[1], 'd',
-                   &b_coeff, &b_coeff_bnds);
-    ierr =
-      cmor_zfactor(&myvars[3], myaxes2[1], "a", "", 1, &myaxes2[1], 'd',
-                   &a_coeff, &a_coeff_bnds);
-/*   printf("defining ap\n"); */
-/*   for(i=0;i<5;i++) {a_coeff[i]*=1.e3;printf("sending acoef: %i, %lf\n",i,a_coeff[i]);} */
-/*   for(i=0;i<6;i++) {a_coeff_bnds[i]*=1.e5;printf("sending acoef: %i, %lf\n",i,a_coeff_bnds[i]);} */
-/*   ierr = cmor_zfactor(&myvars[3],myaxes2[1],"ap","hPa",1,&myaxes2[1],'d',&a_coeff,&a_coeff_bnds); */
-    ierr =
-      cmor_zfactor(&myvars[3], myaxes2[1], "ps", "hPa", 3, &myaxes[0], 'd',
-                   NULL, NULL);
+```c
+{% include_relative examples/c/example_07_fixed_field_rootd.c %}
+```
 
-    /* ok here we decalre a variable for region axis testing */
-    cmor_set_table(tables[0]);
-    myaxes2[0] = myaxes[7];     /* time */
-    myaxes2[1] = myaxes[5];     /* region */
-    myaxes2[2] = myaxes[8];     /* latitudes */
-    printf("Test code: ok we define hfogo positive: %s\n", positive2d[0]);
-    ierr =
-      cmor_variable(&myvars[4], "htovgyre", "W", 3, myaxes2, 'd', NULL, &dtmp2,
-                    NULL, varin2d[0], "no history", "no future");
+</details>
 
-    cmor_set_table(tables[1]);
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
 
-    for (i = 0; i < ntimes; i++) {
-        printf("Test code: writing time: %i of %i\n", i + 1, ntimes);
-
-        printf("2d\n");
-        read_2d_input_files(i, varin2d[0], &data2d, lat, lon);
-        sprintf(id, "%i", i);
-        ierr = cmor_write(myvars[0], &data2d, 'd', NULL, 1, NULL, NULL, NULL);
-        if (ierr)
-            return (1);
-        printf("3d\n");
-        read_3d_input_files(i, varin3d[2], &data3d, lev, lat, lon);
-        ierr = cmor_write(myvars[1], &data3d, 'd', NULL, 1, NULL, NULL, NULL);
-        if (ierr)
-            return (1);
-
-        printf("writing tas\n");
-        read_2d_input_files(i, varin2d[1], &data2d, lat, lon);
-        ierr = cmor_write(myvars[5], &data2d, 'd', NULL, 1, NULL, NULL, NULL);
-        if (ierr)
-            return (1);
-
-        printf("3d zfactor\n");
-        read_3d_input_files(i, varin3d[0], &data3d, 5, lat, lon);
-        ierr = cmor_write(myvars[2], &data3d, 'd', NULL, 1, NULL, NULL, NULL);
-        if (ierr)
-            return (1);
-
-        printf("writing ps\n");
-        read_2d_input_files(i, varin2d[3], &data2d, lat, lon);
-        ierr = cmor_write(myvars[3], &data2d, 'd', NULL, 1, NULL, NULL, &myvars[2]);
-        if (ierr)
-            return (1);
-
-        /* rereading hfls to fake hfogo */
-        printf("2d region\n");
-        read_2d_input_files(i, "htov", &data2d, lat, lon);
-        ierr = cmor_write(myvars[4], &data2d, 'd', NULL, 1, NULL, NULL, NULL);
-        if (ierr)
-            return (1);
-
-    }
-    ierr = cmor_close_variable(myvars[0], NULL, NULL);
-    ierr = cmor_close();
-    return (0);
-}
-
+```text
+{% include_relative examples/c/example_07_fixed_field_rootd.cdl %}
 ```
 
 </details>
