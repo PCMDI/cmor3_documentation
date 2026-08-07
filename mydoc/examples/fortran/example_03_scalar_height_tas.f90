@@ -28,7 +28,8 @@ program example_03_scalar_height_tas
        exit_control=CMOR_EXIT_ON_MAJOR)
   call check_status("cmor_setup", ierr)
 
-  call load_shared_user_input(input_path, output_dir)
+  call load_shared_user_input(input_path, output_dir, &
+       realization_index="r9", forcing_index="f2")
 
   ierr = cmor_load_table("CMIP7_atmos.json")
   call check_id("cmor_load_table(CMIP7_atmos)", ierr)

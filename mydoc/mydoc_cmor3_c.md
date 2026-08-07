@@ -6,7 +6,7 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_c/
 ---
 
-These examples are based on the CMOR repository's [examples/c](https://github.com/PCMDI/cmor/tree/c_examples/examples/c){:target="_blank"} directory. They use the same shared CMIP7 user input file as the Python and Fortran examples and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
+These examples are based on the CMOR repository's [examples/c](https://github.com/PCMDI/cmor/tree/main/examples/c){:target="_blank"} directory. They use the same shared CMIP7 user input file as the Python and Fortran examples and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
 
 Create and activate a Conda or Mamba environment with CMOR and a C compiler:
 

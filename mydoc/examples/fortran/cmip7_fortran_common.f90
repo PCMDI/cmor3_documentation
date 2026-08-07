@@ -23,10 +23,13 @@ contains
     if (len_trim(output_dir) == 0) output_dir = "output"
   end subroutine get_example_args
 
-  subroutine load_shared_user_input(input_path, output_dir, frequency)
+  subroutine load_shared_user_input(input_path, output_dir, frequency, &
+       realization_index, forcing_index)
     character(len=*), intent(in) :: input_path
     character(len=*), intent(in) :: output_dir
     character(len=*), intent(in), optional :: frequency
+    character(len=*), intent(in), optional :: realization_index
+    character(len=*), intent(in), optional :: forcing_index
     integer :: ierr
 
     ierr = cmor_dataset_json(trim(input_path))
@@ -38,6 +41,18 @@ contains
     if (present(frequency)) then
       ierr = cmor_set_cur_dataset_attribute("frequency", trim(frequency), 1)
       call check_status("cmor_set_cur_dataset_attribute(frequency)", ierr)
+    endif
+
+    if (present(realization_index)) then
+      ierr = cmor_set_cur_dataset_attribute("realization_index", &
+           trim(realization_index), 1)
+      call check_status("cmor_set_cur_dataset_attribute(realization_index)", ierr)
+    endif
+
+    if (present(forcing_index)) then
+      ierr = cmor_set_cur_dataset_attribute("forcing_index", &
+           trim(forcing_index), 1)
+      call check_status("cmor_set_cur_dataset_attribute(forcing_index)", ierr)
     endif
   end subroutine load_shared_user_input
 

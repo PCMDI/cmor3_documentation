@@ -62,7 +62,7 @@ variables:
 		hfls:long_name = "Surface Upward Latent Heat Flux" ;
 		hfls:units = "W m-2" ;
 		hfls:cell_methods = "area: time: mean" ;
-		hfls:history = "2026-07-13T18:09:46Z altered by CMOR: Reordered dimensions, original order: time y x." ;
+		hfls:history = "2026-08-07T00:46:52Z altered by CMOR: Reordered dimensions, original order: time y x." ;
 		hfls:missing_value = 1.e+20f ;
 		hfls:_FillValue = 1.e+20f ;
 		hfls:cell_measures = "area: areacella" ;
@@ -72,10 +72,11 @@ variables:
 // global attributes:
 		:Conventions = "CF-1.12" ;
 		:activity_id = "CMIP" ;
+		:archive_id = "WCRP" ;
 		:area_label = "u" ;
 		:branded_variable = "hfls_tavg-u-hxy-u" ;
 		:branding_suffix = "tavg-u-hxy-u" ;
-		:creation_date = "2026-07-13T18:09:46Z" ;
+		:creation_date = "2026-08-07T00:46:52Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -85,8 +86,9 @@ variables:
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
 		:grid_label = "g999" ;
-		:history = "2026-07-13T18:09:46Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:history = "2026-08-07T00:46:52Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hxy" ;
+		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
 		:institution = "Met Office Hadley Centre" ;
 		:institution_id = "MOHC" ;
@@ -100,10 +102,10 @@ variables:
 		:region = "glb" ;
 		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
 		:source_id = "ACCESS-ESM1-6" ;
-		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-01 12:00:41) MD5:6d699a80e3231888efe8abea7d5ae8f1" ;
+		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-21 13:16:24) MD5:28339aa355908b9331150e1536f5e384" ;
 		:temporal_label = "tavg" ;
 		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
-		:tracking_id = "hdl:21.14107/5324f7e9-07d6-493c-a36a-9ce3ce4ca47c" ;
+		:tracking_id = "hdl:21.14107/56ae9743-13c7-4712-bf75-b445d0a7df7b" ;
 		:variable_id = "hfls" ;
 		:variant_label = "r1i1p1f1" ;
 		:vertical_label = "u" ;
@@ -184,3 +186,4 @@ data:
   85, 93, 101,
   87, 95, 103 ;
 }
+

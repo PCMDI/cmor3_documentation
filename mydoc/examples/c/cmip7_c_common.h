@@ -14,7 +14,9 @@ void cmip7_get_example_args(int argc, char **argv, const char **tables_path,
                             const char **input_path, const char **output_dir);
 void cmip7_load_shared_user_input(const char *input_path,
                                   const char *output_dir,
-                                  const char *frequency);
+                                  const char *frequency,
+                                  const char *realization_index,
+                                  const char *forcing_index);
 void cmip7_get_cell_measures(const char *tables_path, const char *realm,
                              const char *table_entry, const char *frequency,
                              const char *region, char *value,

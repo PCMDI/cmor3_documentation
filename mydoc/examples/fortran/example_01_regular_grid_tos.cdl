@@ -39,10 +39,11 @@ variables:
 // global attributes:
 		:Conventions = "CF-1.12" ;
 		:activity_id = "CMIP" ;
+		:archive_id = "WCRP" ;
 		:area_label = "sea" ;
 		:branded_variable = "tos_tavg-u-hxy-sea" ;
 		:branding_suffix = "tavg-u-hxy-sea" ;
-		:creation_date = "2026-07-13T20:04:29Z" ;
+		:creation_date = "2026-08-07T00:47:26Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -52,8 +53,9 @@ variables:
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
 		:grid_label = "g999" ;
-		:history = "2026-07-13T20:04:29Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:history = "2026-08-07T00:47:26Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hxy" ;
+		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
 		:institution = "Met Office Hadley Centre" ;
 		:institution_id = "MOHC" ;
@@ -68,10 +70,10 @@ variables:
 		:region = "glb" ;
 		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
 		:source_id = "ACCESS-ESM1-6" ;
-		:table_info = "Name: CMIP7_ocean.json; Creation Date:(2026-07-09 13:08:05) MD5:49b5e8ac801654031916194725c55809" ;
+		:table_info = "Name: CMIP7_ocean.json; Creation Date:(2026-07-21 13:16:24) MD5:734c6f53560fa60b7c1c21b38e5b9a3f" ;
 		:temporal_label = "tavg" ;
 		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
-		:tracking_id = "hdl:21.14107/9d5818a9-7658-4495-8f14-ad54499c0ba3" ;
+		:tracking_id = "hdl:21.14107/2edfc3a9-7309-4cd4-be00-0ab3b26a8ef8" ;
 		:variable_id = "tos" ;
 		:variant_label = "r1i1p1f1" ;
 		:vertical_label = "u" ;
@@ -108,3 +110,4 @@ data:
   258.868, 258.499, _, 255.2432,
   254.0254, 251.546, _, 255.7808 ;
 }
+

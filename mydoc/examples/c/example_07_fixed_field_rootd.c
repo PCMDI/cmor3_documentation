@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 
   cmor_setup((char *)tables_path, &file_action, NULL, &exit_control, NULL,
              NULL);
-  cmip7_load_shared_user_input(input_path, output_dir, "fx");
+  cmip7_load_shared_user_input(input_path, output_dir, "fx", NULL, NULL);
   cmor_load_table("CMIP7_land.json", &table_id);
 
   cmor_axis(&lon_id, "longitude", "degrees_east", CMIP7_NLON, lon, 'd',

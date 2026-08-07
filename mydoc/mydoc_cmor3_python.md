@@ -27,7 +27,7 @@ git clone https://github.com/WCRP-CMIP/cmip7-cmor-tables.git
 python /path/to/example_01_usual_2d_field.py
 ```
 
-The examples expect tables under `./cmip7-cmor-tables/tables`. To use a different location, set `CMOR_TABLES_PATH` to the directory containing the CMIP7 table JSON files.
+The examples expect tables under `./cmip7-cmor-tables/tables`. To use a different location, set `CMOR_TABLES_PATH` to the directory containing the CMIP7 table JSON files. Each example also accepts `--output-dir` to choose where CMOR writes NetCDF output.
 
 Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_cell_measures.json` and `CMIP7_long_name_overrides.json` before writing data.
 

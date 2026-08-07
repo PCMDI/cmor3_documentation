@@ -70,10 +70,11 @@ variables:
 // global attributes:
 		:Conventions = "CF-1.12" ;
 		:activity_id = "CMIP" ;
+		:archive_id = "WCRP" ;
 		:area_label = "u" ;
 		:branded_variable = "cl_tavg-al-hxy-u" ;
 		:branding_suffix = "tavg-al-hxy-u" ;
-		:creation_date = "2026-07-13T18:09:46Z" ;
+		:creation_date = "2026-08-07T00:46:51Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -83,8 +84,9 @@ variables:
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
 		:grid_label = "g999" ;
-		:history = "2026-07-13T18:09:46Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:history = "2026-08-07T00:46:51Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hxy" ;
+		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
 		:institution = "Met Office Hadley Centre" ;
 		:institution_id = "MOHC" ;
@@ -98,7 +100,7 @@ variables:
 		:region = "glb" ;
 		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
 		:source_id = "ACCESS-ESM1-6" ;
-		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-01 12:00:41) MD5:6d699a80e3231888efe8abea7d5ae8f1" ;
+		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-21 13:16:24) MD5:28339aa355908b9331150e1536f5e384" ;
 		:temporal_label = "tavg" ;
 		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
 		:variable_id = "cl" ;
@@ -106,7 +108,7 @@ variables:
 		:vertical_label = "al" ;
 		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
 		:cmor_version = "3.15.2" ;
-		:tracking_id = "hdl:21.14107/ad929323-6c5f-46e5-84a8-9f9f51c5b6c4" ;
+		:tracking_id = "hdl:21.14107/17a3a87a-88ac-46fd-82f6-c55c756211d5" ;
 data:
 
  time = 15, 45 ;
@@ -199,3 +201,4 @@ data:
   51.7, 51.7, 52.1, 52.5,
   50.1, 50.5, 50.9, 51.3 ;
 }
+

@@ -6,7 +6,7 @@ sidebar: mydoc_sidebar
 permalink: /mydoc_cmor3_fortran/
 ---
 
-These examples are based on the CMOR repository's [examples/fortran](https://github.com/PCMDI/cmor/tree/988-handling-of-optional-global-attributes/examples/fortran){:target="_blank"} directory. They use the same shared CMIP7 user input file as the Python examples and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
+These examples are based on the CMOR repository's [examples/fortran](https://github.com/PCMDI/cmor/tree/main/examples/fortran){:target="_blank"} directory. They use the same shared CMIP7 user input file as the Python examples and load CMIP7 tables from a local clone of [WCRP-CMIP/cmip7-cmor-tables](https://github.com/WCRP-CMIP/cmip7-cmor-tables){:target="_blank"}.
 
 Create and activate a Conda or Mamba environment with CMOR and a Fortran compiler:
 

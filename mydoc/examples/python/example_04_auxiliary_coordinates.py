@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 from pathlib import Path
@@ -13,79 +14,141 @@ EXAMPLE_DIR = Path(__file__).resolve().parent
 RUN_DIR = Path.cwd()
 DEFAULT_TABLES_PATH = RUN_DIR / "cmip7-cmor-tables" / "tables"
 TABLES_PATH = Path(os.environ.get("CMOR_TABLES_PATH", DEFAULT_TABLES_PATH))
-INPUT_PATH = EXAMPLE_DIR / "CMIP7_input_example.json"
+INPUT_PATH = EXAMPLE_DIR.parent / "CMIP7_input_example.json"
 
-os.chdir(EXAMPLE_DIR)
-(EXAMPLE_DIR / "output").mkdir(exist_ok=True)
-cmor.setup(inpath=str(TABLES_PATH), netcdf_file_action=cmor.CMOR_REPLACE)
-cmor.dataset_json(str(INPUT_PATH))
-cmor.load_table("CMIP7_ocean.json")
-time_id = cmor.axis(
-    "time",
-    "days since 1979-01-01",
-    coord_vals=np.array([15.5, 45.5], dtype="d"),
-    cell_bounds=np.array([0.0, 31.0, 60.0], dtype="d"),
-)
-lat_id = cmor.axis(
-    "latitude",
-    "degrees_north",
-    coord_vals=np.array([10.0, 20.0, 30.0], dtype="d"),
-    cell_bounds=np.array([5.0, 15.0, 25.0, 35.0], dtype="d"),
-)
-basin_id = cmor.axis(
-    "basin",
-    "",
-    coord_vals=np.array(
+
+def configure(
+    output_dir: Path,
+    frequency: str = "mon",
+    realization_index: str = "r1",
+    forcing_index: str = "f1",
+) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    user_input = json.loads(INPUT_PATH.read_text())
+    user_input["outpath"] = str(output_dir)
+    user_input["frequency"] = frequency
+    user_input["realization_index"] = realization_index
+    user_input["forcing_index"] = forcing_index
+    input_path = output_dir / "CMIP7_input_example.json"
+    input_path.write_text(json.dumps(user_input, indent=2, sort_keys=True))
+    cmor.setup(inpath=str(TABLES_PATH), netcdf_file_action=cmor.CMOR_REPLACE)
+    cmor.dataset_json(str(input_path))
+
+
+def apply_cmip7_variable_metadata(
+    var_id: int,
+    realm: str,
+    table_entry: str,
+    frequency: str,
+    region: str,
+) -> str:
+    compound_name = ".".join(
+        [realm] + table_entry.split("_") + [frequency, region]
+    )
+
+    with (TABLES_PATH / "CMIP7_cell_measures.json").open() as handle:
+        cell_measures = json.load(handle)["cell_measures"]
+    cmor.set_variable_attribute(
+        var_id,
+        "cell_measures",
+        "c",
+        cell_measures.get(compound_name, ""),
+    )
+
+    with (TABLES_PATH / "CMIP7_long_name_overrides.json").open() as handle:
+        long_name_overrides = json.load(handle)["long_name_overrides"]
+    if compound_name in long_name_overrides:
+        cmor.set_variable_attribute(
+            var_id,
+            "long_name",
+            "c",
+            long_name_overrides[compound_name],
+        )
+
+    return compound_name
+
+
+def write_example(output_dir: Path) -> str:
+    configure(output_dir)
+    cmor.load_table("CMIP7_ocean.json")
+    time_id = cmor.axis(
+        "time",
+        "days since 1979-01-01",
+        coord_vals=np.array([15.5, 45.5], dtype="d"),
+        cell_bounds=np.array([0.0, 31.0, 60.0], dtype="d"),
+    )
+    lat_id = cmor.axis(
+        "latitude",
+        "degrees_north",
+        coord_vals=np.array([10.0, 20.0, 30.0], dtype="d"),
+        cell_bounds=np.array([5.0, 15.0, 25.0, 35.0], dtype="d"),
+    )
+    basin_id = cmor.axis(
+        "basin",
+        "",
+        coord_vals=np.array(
+            [
+                "atlantic_arctic_ocean",
+                "indian_pacific_ocean",
+                "global_ocean",
+            ],
+            dtype="U21",
+        ),
+    )
+    var_id = cmor.variable(
+        "htovgyre_tavg-u-hyb-sea",
+        "W",
+        [time_id, basin_id, lat_id],
+        missing_value=1.0e20,
+    )
+    apply_cmip7_variable_metadata(
+        var_id,
+        "ocean",
+        "htovgyre_tavg-u-hyb-sea",
+        "mon",
+        "glb",
+    )
+    data = np.array(
         [
-            "atlantic_arctic_ocean",
-            "indian_pacific_ocean",
-            "global_ocean",
+            -80.0,
+            -84.0,
+            -88.0,
+            -100.0,
+            -104.0,
+            -76.0,
+            -120.0,
+            -92.0,
+            -96.0,
+            -79.0,
+            -83.0,
+            -87.0,
+            -99.0,
+            -103.0,
+            -75.0,
+            -107.0,
+            -111.0,
+            -115.0,
         ],
-        dtype="U21",
-    ),
-)
-variable_name = "htovgyre_tavg-u-hyb-sea"
-var_id = cmor.variable(
-    variable_name,
-    "W",
-    [time_id, basin_id, lat_id],
-    missing_value=1.0e20,
-)
-compound_name = ".".join(["ocean"] + variable_name.split("_") + ["mon", "glb"])
+        dtype="f4",
+    ).reshape(2, 3, 3)
+    cmor.write(var_id, data)
+    path = cmor.close(var_id, file_name=True)
+    cmor.close()
+    return path
 
-with open(TABLES_PATH / "CMIP7_cell_measures.json") as handle:
-    cell_measure = json.load(handle)["cell_measures"].get(compound_name)
-if cell_measure:
-    cmor.set_variable_attribute(var_id, "cell_measures", "c", cell_measure)
 
-with open(TABLES_PATH / "CMIP7_long_name_overrides.json") as handle:
-    long_name = json.load(handle)["long_name_overrides"].get(compound_name)
-if long_name:
-    cmor.set_variable_attribute(var_id, "long_name", "c", long_name)
-data = np.array(
-    [
-        -80.0,
-        -84.0,
-        -88.0,
-        -100.0,
-        -104.0,
-        -76.0,
-        -120.0,
-        -92.0,
-        -96.0,
-        -79.0,
-        -83.0,
-        -87.0,
-        -99.0,
-        -103.0,
-        -75.0,
-        -107.0,
-        -111.0,
-        -115.0,
-    ],
-    dtype="f4",
-).reshape(2, 3, 3)
-cmor.write(var_id, data)
-path = cmor.close(var_id, file_name=True)
-cmor.close()
-print(path)
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Write CMIP7 example 4 with CMOR."
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path(__file__).resolve().parent / "output",
+    )
+    args = parser.parse_args()
+    print(write_example(args.output_dir))
+
+
+if __name__ == "__main__":
+    main()

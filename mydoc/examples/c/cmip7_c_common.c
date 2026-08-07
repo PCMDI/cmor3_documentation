@@ -53,7 +53,9 @@ void cmip7_get_example_args(int argc, char **argv, const char **tables_path,
 
 void cmip7_load_shared_user_input(const char *input_path,
                                   const char *output_dir,
-                                  const char *frequency) {
+                                  const char *frequency,
+                                  const char *realization_index,
+                                  const char *forcing_index) {
   check_status("cmor_dataset_json", cmor_dataset_json((char *)input_path));
   check_status("cmor_set_cur_dataset_attribute(outpath)",
                cmor_set_cur_dataset_attribute("outpath", (char *)output_dir,
@@ -62,6 +64,16 @@ void cmip7_load_shared_user_input(const char *input_path,
     check_status("cmor_set_cur_dataset_attribute(frequency)",
                  cmor_set_cur_dataset_attribute("frequency", (char *)frequency,
                                                 1));
+  }
+  if (realization_index != NULL) {
+    check_status("cmor_set_cur_dataset_attribute(realization_index)",
+                 cmor_set_cur_dataset_attribute(
+                     "realization_index", (char *)realization_index, 1));
+  }
+  if (forcing_index != NULL) {
+    check_status("cmor_set_cur_dataset_attribute(forcing_index)",
+                 cmor_set_cur_dataset_attribute(
+                     "forcing_index", (char *)forcing_index, 1));
   }
 }
 
