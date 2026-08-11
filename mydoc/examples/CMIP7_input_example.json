@@ -1,0 +1,23 @@
+{
+  "_AXIS_ENTRY_FILE": "CMIP7_coordinate.json",
+  "_FORMULA_VAR_FILE": "CMIP7_formula_terms.json",
+  "_cmip7_option": 1,
+  "_controlled_vocabulary_file": "../tables-cvs/cmor-cvs.json",
+  "activity_id": "CMIP",
+  "archive_id": "WCRP",
+  "calendar": "360_day",
+  "experiment_id": "amip",
+  "forcing_index": "f1",
+  "frequency": "mon",
+  "grid_label": "g999",
+  "host_collection": "CMIP7",
+  "initialization_index": "i1",
+  "institution_id": "MOHC",
+  "license_id": "CC-BY-4.0",
+  "nominal_resolution": "100 km",
+  "outpath": "output",
+  "physics_index": "p1",
+  "realization_index": "r1",
+  "region": "glb",
+  "source_id": "ACCESS-ESM1-6"
+}

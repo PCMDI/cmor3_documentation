@@ -1,0 +1,189 @@
+netcdf hfls_tavg-u-hxy-u_mon_glb_g999_ACCESS-ESM1-6_amip_r1i1p1f1_197901-197902 {
+dimensions:
+	time = UNLIMITED ; // (2 currently)
+	x = 4 ;
+	y = 3 ;
+	bnds = 2 ;
+	vertices = 4 ;
+variables:
+	double time(time) ;
+		time:bounds = "time_bnds" ;
+		time:units = "days since 1979-01-01" ;
+		time:calendar = "360_day" ;
+		time:axis = "T" ;
+		time:long_name = "Time Intervals" ;
+		time:standard_name = "time" ;
+	double time_bnds(time, bnds) ;
+	double x(x) ;
+		x:bounds = "x_bnds" ;
+		x:units = "m" ;
+		x:axis = "X" ;
+		x:long_name = "x coordinate of projection" ;
+		x:standard_name = "projection_x_coordinate" ;
+	double x_bnds(x, bnds) ;
+	double y(y) ;
+		y:bounds = "y_bnds" ;
+		y:units = "m" ;
+		y:axis = "Y" ;
+		y:long_name = "y coordinate of projection" ;
+		y:standard_name = "projection_y_coordinate" ;
+	double y_bnds(y, bnds) ;
+	int lambert_conformal_conic ;
+		lambert_conformal_conic:grid_mapping_name = "lambert_conformal_conic" ;
+		lambert_conformal_conic:standard_parallel = -20., 20. ;
+		lambert_conformal_conic:longitude_of_central_meridian = 175. ;
+		lambert_conformal_conic:latitude_of_projection_origin = 13. ;
+		lambert_conformal_conic:false_easting = 8. ;
+		lambert_conformal_conic:false_northing = 0. ;
+	double latitude(x, y) ;
+		latitude:standard_name = "latitude" ;
+		latitude:long_name = "latitude" ;
+		latitude:units = "degrees_north" ;
+		latitude:missing_value = 1.e+20 ;
+		latitude:_FillValue = 1.e+20 ;
+		latitude:bounds = "vertices_latitude" ;
+	double longitude(x, y) ;
+		longitude:standard_name = "longitude" ;
+		longitude:long_name = "longitude" ;
+		longitude:units = "degrees_east" ;
+		longitude:missing_value = 1.e+20 ;
+		longitude:_FillValue = 1.e+20 ;
+		longitude:bounds = "vertices_longitude" ;
+	double vertices_latitude(x, y, vertices) ;
+		vertices_latitude:units = "degrees_north" ;
+		vertices_latitude:missing_value = 1.e+20 ;
+		vertices_latitude:_FillValue = 1.e+20 ;
+	double vertices_longitude(x, y, vertices) ;
+		vertices_longitude:units = "degrees_east" ;
+		vertices_longitude:missing_value = 1.e+20 ;
+		vertices_longitude:_FillValue = 1.e+20 ;
+	float hfls(time, x, y) ;
+		hfls:standard_name = "surface_upward_latent_heat_flux" ;
+		hfls:long_name = "Surface Upward Latent Heat Flux" ;
+		hfls:units = "W m-2" ;
+		hfls:cell_methods = "area: time: mean" ;
+		hfls:history = "2026-08-07T00:46:52Z altered by CMOR: Reordered dimensions, original order: time y x." ;
+		hfls:missing_value = 1.e+20f ;
+		hfls:_FillValue = 1.e+20f ;
+		hfls:cell_measures = "area: areacella" ;
+		hfls:grid_mapping = "lambert_conformal_conic" ;
+		hfls:coordinates = "latitude longitude" ;
+
+// global attributes:
+		:Conventions = "CF-1.12" ;
+		:activity_id = "CMIP" ;
+		:archive_id = "WCRP" ;
+		:area_label = "u" ;
+		:branded_variable = "hfls_tavg-u-hxy-u" ;
+		:branding_suffix = "tavg-u-hxy-u" ;
+		:creation_date = "2026-08-07T00:46:52Z" ;
+		:data_specs_version = "MIP-DS7.1.0.0" ;
+		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:drs_specs = "MIP-DRS7" ;
+		:experiment = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
+		:experiment_id = "amip" ;
+		:external_variables = "areacella" ;
+		:forcing_index = "f1" ;
+		:frequency = "mon" ;
+		:grid_label = "g999" ;
+		:history = "2026-08-07T00:46:52Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:horizontal_label = "hxy" ;
+		:host_collection = "CMIP7" ;
+		:initialization_index = "i1" ;
+		:institution = "Met Office Hadley Centre" ;
+		:institution_id = "MOHC" ;
+		:license_id = "CC-BY-4.0" ;
+		:mip_era = "CMIP7" ;
+		:nominal_resolution = "100 km" ;
+		:physics_index = "p1" ;
+		:product = "model-output" ;
+		:realization_index = "r1" ;
+		:realm = "atmos" ;
+		:region = "glb" ;
+		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
+		:source_id = "ACCESS-ESM1-6" ;
+		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-21 13:16:24) MD5:28339aa355908b9331150e1536f5e384" ;
+		:temporal_label = "tavg" ;
+		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
+		:tracking_id = "hdl:21.14107/56ae9743-13c7-4712-bf75-b445d0a7df7b" ;
+		:variable_id = "hfls" ;
+		:variant_label = "r1i1p1f1" ;
+		:vertical_label = "u" ;
+		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
+		:cmor_version = "3.15.2" ;
+data:
+
+ time = 15.5, 45.5 ;
+
+ time_bnds =
+  0, 31,
+  31, 60 ;
+
+ x = 0, 10000, 20000, 30000 ;
+
+ x_bnds =
+  -5000, 5000,
+  5000, 15000,
+  15000, 25000,
+  25000, 35000 ;
+
+ y = 0, 10000, 20000 ;
+
+ y_bnds =
+  -5000, 5000,
+  5000, 15000,
+  15000, 25000 ;
+
+ lambert_conformal_conic = _ ;
+
+ latitude =
+  10, 20, 30,
+  8, 18, 28,
+  6, 16, 26,
+  4, 14, 24 ;
+
+ longitude =
+  280, 282, 284,
+  290, 292, 294,
+  300, 302, 304,
+  310, 312, 314 ;
+
+ vertices_latitude =
+  5, 6, 15, 14,
+  15, 16, 25, 24,
+  25, 26, 35, 34,
+  3, 4, 13, 12,
+  13, 14, 23, 22,
+  23, 24, 33, 32,
+  1, 2, 11, 10,
+  11, 12, 21, 20,
+  21, 22, 31, 30,
+  -1, 0, 9, 8,
+  9, 10, 19, 18,
+  19, 20, 29, 28 ;
+
+ vertices_longitude =
+  275, 285, 285, 275,
+  277, 287, 287, 277,
+  279, 289, 289, 279,
+  285, 295, 295, 285,
+  287, 297, 297, 287,
+  289, 299, 299, 289,
+  295, 305, 305, 295,
+  297, 307, 307, 297,
+  299, 309, 309, 299,
+  305, 315, 315, 305,
+  307, 317, 317, 307,
+  309, 319, 319, 309 ;
+
+ hfls =
+  80, 88, 96,
+  82, 90, 98,
+  84, 92, 100,
+  86, 94, 102,
+  81, 89, 97,
+  83, 91, 99,
+  85, 93, 101,
+  87, 95, 103 ;
+}
+
