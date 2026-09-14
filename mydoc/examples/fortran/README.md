@@ -1,5 +1,9 @@
 # Fortran examples
 
+These examples write small synthetic CMIP7 fields for regular grids, pressure
+levels, scalar coordinates, basin coordinates, hybrid-sigma model levels,
+curvilinear grids, fixed fields, and site dimensions.
+
 ## Setup
 
 To run the examples, you need a Conda or Mamba environment with CMOR and a
