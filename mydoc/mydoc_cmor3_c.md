@@ -225,3 +225,23 @@ Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_
 ```
 
 </details>
+
+### Example 8: Site Dimension
+
+* [example_08_site_dimension.c]({{site.baseurl}}/mydoc/examples/c/example_08_site_dimension.c){:target="_blank"}
+
+<details><summary markdown="span"><b>Click to expand C code</b></summary>
+
+```c
+{% include_relative examples/c/example_08_site_dimension.c %}
+```
+
+</details>
+
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
+
+```text
+{% include_relative examples/c/example_08_site_dimension.cdl %}
+```
+
+</details>

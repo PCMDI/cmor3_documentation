@@ -187,3 +187,23 @@ Each example builds the CMIP7 compound variable name and uses it to read `CMIP7_
 ```
 
 </details>
+
+### Example 8: Site Dimension
+
+* [example_08_site_dimension.py]({{site.baseurl}}/mydoc/examples/python/example_08_site_dimension.py){:target="_blank"}
+
+<details><summary markdown="span"><b>Click to expand Python code</b></summary>
+
+```python
+{% include_relative examples/python/example_08_site_dimension.py %}
+```
+
+</details>
+
+<details><summary markdown="span"><b>Click to expand NetCDF dump</b></summary>
+
+```text
+{% include_relative examples/python/example_08_site_dimension.cdl %}
+```
+
+</details>

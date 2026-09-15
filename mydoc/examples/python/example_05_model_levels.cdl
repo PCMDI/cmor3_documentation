@@ -74,7 +74,7 @@ variables:
 		:area_label = "u" ;
 		:branded_variable = "cl_tavg-al-hxy-u" ;
 		:branding_suffix = "tavg-al-hxy-u" ;
-		:creation_date = "2026-08-07T00:46:51Z" ;
+		:creation_date = "2026-09-14T18:13:51Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -84,7 +84,7 @@ variables:
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
 		:grid_label = "g999" ;
-		:history = "2026-08-07T00:46:51Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:history = "2026-09-14T18:13:51Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hxy" ;
 		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
@@ -107,8 +107,8 @@ variables:
 		:variant_label = "r1i1p1f1" ;
 		:vertical_label = "al" ;
 		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
-		:cmor_version = "3.15.2" ;
-		:tracking_id = "hdl:21.14107/17a3a87a-88ac-46fd-82f6-c55c756211d5" ;
+		:cmor_version = "3.15.3" ;
+		:tracking_id = "hdl:21.14107/18c1a76e-61e6-45ee-b54b-9b48184fea90" ;
 data:
 
  time = 15, 45 ;
@@ -201,4 +201,3 @@ data:
   51.7, 51.7, 52.1, 52.5,
   50.1, 50.5, 50.9, 51.3 ;
 }
-

@@ -1,5 +1,9 @@
 # Python examples
 
+These examples write small synthetic CMIP7 fields for regular grids, pressure
+levels, scalar coordinates, auxiliary coordinates, hybrid-sigma model levels,
+curvilinear grids, fixed fields, and site dimensions.
+
 ## Setup
 
 Install CMOR to your Python environment.

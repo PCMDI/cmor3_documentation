@@ -50,7 +50,7 @@ variables:
 		:area_label = "air" ;
 		:branded_variable = "ta_tavg-p19-hxy-air" ;
 		:branding_suffix = "tavg-p19-hxy-air" ;
-		:creation_date = "2026-08-07T00:48:05Z" ;
+		:creation_date = "2026-09-14T18:14:07Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -60,7 +60,7 @@ variables:
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
 		:grid_label = "g999" ;
-		:history = "2026-08-07T00:48:05Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:history = "2026-09-14T18:14:07Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hxy" ;
 		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
@@ -80,12 +80,12 @@ variables:
 		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-21 13:16:24) MD5:28339aa355908b9331150e1536f5e384" ;
 		:temporal_label = "tavg" ;
 		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
-		:tracking_id = "hdl:21.14107/98acdd2d-a903-4e53-9f2b-3c61856d3f2d" ;
+		:tracking_id = "hdl:21.14107/6767a5b5-015b-41e8-896d-c627e21f2451" ;
 		:variable_id = "ta" ;
 		:variant_label = "r1i1p1f1" ;
 		:vertical_label = "p19" ;
 		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
-		:cmor_version = "3.15.2" ;
+		:cmor_version = "3.15.3" ;
 data:
 
  time = 15.5, 45.5 ;
@@ -228,4 +228,3 @@ data:
   275.4934, 275.5482, 275.6031, 275.6579,
   275.7127, 275.7675, 275.8224, 275.8772 ;
 }
-
