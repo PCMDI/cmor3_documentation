@@ -1,4 +1,4 @@
-netcdf tas_tpt-h2m-hs-u_mon_glb_g999_ACCESS-ESM1-6_amip_r1i1p1f1_197901-197902 {
+netcdf tas_tpt-h2m-hs-u_mon_glb_g010_ACCESS-ESM1-6_amip_r1i1p1f1_197901-197902 {
 dimensions:
 	time = UNLIMITED ; // (2 currently)
 	site = 126 ;
@@ -48,7 +48,7 @@ variables:
 		tas:long_name = "Near-Surface Air Temperature" ;
 		tas:units = "K" ;
 		tas:cell_methods = "area: point time: point" ;
-		tas:history = "2026-09-14T18:14:25Z altered by CMOR: Treated scalar dimension: \'height\'." ;
+		tas:history = "2026-09-21T23:12:57Z altered by CMOR: Treated scalar dimension: \'height\'." ;
 		tas:coordinates = "height latitude longitude" ;
 		tas:missing_value = 1.e+20f ;
 		tas:_FillValue = 1.e+20f ;
@@ -56,11 +56,10 @@ variables:
 // global attributes:
 		:Conventions = "CF-1.12" ;
 		:activity_id = "CMIP" ;
-		:archive_id = "WCRP" ;
 		:area_label = "u" ;
 		:branded_variable = "tas_tpt-h2m-hs-u" ;
 		:branding_suffix = "tpt-h2m-hs-u" ;
-		:creation_date = "2026-09-14T18:14:25Z" ;
+		:creation_date = "2026-09-21T23:12:57Z" ;
 		:data_specs_version = "MIP-DS7.1.0.0" ;
 		:description = "Simulation of the climate of the recent past with prescribed sea surface temperatures and sea ice concentrations." ;
 		:drs_specs = "MIP-DRS7" ;
@@ -68,10 +67,9 @@ variables:
 		:experiment_id = "amip" ;
 		:forcing_index = "f1" ;
 		:frequency = "mon" ;
-		:grid_label = "g999" ;
-		:history = "2026-09-14T18:14:25Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
+		:grid_label = "g010" ;
+		:history = "2026-09-21T23:12:57Z ; CMOR rewrote data to be consistent with CF-1.12 and CMIP7 data requirements." ;
 		:horizontal_label = "hs" ;
-		:host_collection = "CMIP7" ;
 		:initialization_index = "i1" ;
 		:institution = "Met Office Hadley Centre" ;
 		:institution_id = "MOHC" ;
@@ -86,15 +84,15 @@ variables:
 		:region = "glb" ;
 		:source = "ACCESS-ESM1-6: aerosol: classic; atmosphere: um7-3; land-surface: cable3; ocean-biogeochemistry: wombatlite; ocean: mom5; sea-ice: cice5" ;
 		:source_id = "ACCESS-ESM1-6" ;
-		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-07-21 13:16:24) MD5:28339aa355908b9331150e1536f5e384" ;
+		:table_info = "Name: CMIP7_atmos.json; Creation Date:(2026-09-15 12:08:04) MD5:62118a61f5a58931374a1792f77ca09e" ;
 		:temporal_label = "tpt" ;
 		:title = "ACCESS-ESM1-6 output prepared for CMIP7" ;
-		:tracking_id = "hdl:21.14107/5208df6b-b34e-45cc-ad98-8a4d6dfe7936" ;
+		:tracking_id = "hdl:21.14107/5bc96f98-d7a3-48bf-8d6d-eaa103af6fe8" ;
 		:variable_id = "tas" ;
 		:variant_label = "r1i1p1f1" ;
 		:vertical_label = "h2m" ;
 		:license = "CC-BY-4.0; CMIP7 data produced by MOHC is licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Consult https://wcrp-cmip.github.io/cmip7-guidance/docs/CMIP7/Guidance_for_users/#2-terms-of-use-and-citations-requirements for terms of use governing CMIP7 output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law." ;
-		:cmor_version = "3.15.3" ;
+		:cmor_version = "3.16.0" ;
 data:
 
  time = 15.5, 45.5 ;
